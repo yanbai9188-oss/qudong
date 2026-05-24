@@ -24,6 +24,10 @@ $map = @{
     'Intel_7260_Bluetooth_20.100.5.1' = 'intel_bluetooth_7260'
     'Realtek_LAN_8168'  = 'realtek_lan_8168'
     'intel_graphics'    = 'intel_graphics'
+    'intel_usb3'        = 'intel_usb3'
+    'intel_lan_i219'    = 'intel_lan_i219'
+    'intel_wifi_8260'   = 'intel_wifi_8260'
+    'realtek_cardreader' = 'realtek_cardreader'
     'Intel_DisplayAudio' = 'intel_display_audio'
 }
 

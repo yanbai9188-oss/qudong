@@ -1,6 +1,6 @@
 ﻿{
     "schema_version":  3,
-    "version":  "1.1.0",
+    "version":  "1.2.0",
     "updated":  "2026-05-24",
     "description":  "CIODIY driver manifest v3 - Win10/Win11, Win10-first batch reinstall",
     "repository":  "https://github.com/yanbai9188-oss/qudong",
@@ -468,7 +468,146 @@
                                                             "win10",
                                                             "win11"
                                                         ]
-                                             }
+                                             },
+                     "Seed_Intel_USB3":  {
+                                             "confidence":  "high",
+                                             "win10_preferred":  true,
+                                             "sha256":  "3512c606a0b9d8277ef03df59e8f72d1991e6ecb93e2259c0714966376c554cd",
+                                             "verify":  "enum",
+                                             "version":  "10.1.23.5",
+                                             "os":  [
+                                                        "win10",
+                                                        "win11"
+                                                    ],
+                                             "hwids":  [
+                                                           "PCI\\VEN_8086\u0026DEV_1E31",
+                                                           "PCI\\VEN_8086\u0026DEV_8CB1",
+                                                           "PCI\\VEN_8086\u0026DEV_9DED",
+                                                           "PCI\\VEN_8086\u0026DEV_A87E",
+                                                           "PCI\\VEN_8086\u0026DEV_43ED",
+                                                           "PCI\\VEN_8086\u0026DEV_06ED",
+                                                           "PCI\\VEN_8086\u0026DEV_1E2D",
+                                                           "PCI\\VEN_8086\u0026DEV_8C31",
+                                                           "PCI\\VEN_8086\u0026DEV_9C31"
+                                                       ],
+                                             "reboot_required":  false,
+                                             "score":  88,
+                                             "title":  "Intel USB 3.0 xHCI / 鑺墖缁?USB (Win10 鎵归噺)",
+                                             "vendor":  "Intel",
+                                             "signed":  true,
+                                             "category":  "usb",
+                                             "whql":  true,
+                                             "rollback":  true,
+                                             "installOrder":  15,
+                                             "priority":  88,
+                                             "risk":  "low",
+                                             "url":  "https://github.com/yanbai9188-oss/qudong/releases/download/v1.0.0/intel_usb3.zip",
+                                             "success_rate":  0.93,
+                                             "id":  "intel_usb3"
+                                         },
+                     "Seed_Intel_LAN_I219":  {
+                                                 "confidence":  "high",
+                                                 "win10_preferred":  true,
+                                                 "sha256":  "4da96ab86552c9fb414c4f197e83b3f7bba091a475411c9d8fb05c86913913ed",
+                                                 "verify":  "net",
+                                                 "version":  "12.19.2.45",
+                                                 "os":  [
+                                                            "win10",
+                                                            "win11"
+                                                        ],
+                                                 "hwids":  [
+                                                               "PCI\\VEN_8086\u0026DEV_15B8",
+                                                               "PCI\\VEN_8086\u0026DEV_15D8",
+                                                               "PCI\\VEN_8086\u0026DEV_15F4",
+                                                               "PCI\\VEN_8086\u0026DEV_15BD",
+                                                               "PCI\\VEN_8086\u0026DEV_15BE",
+                                                               "PCI\\VEN_8086\u0026DEV_15BB"
+                                                           ],
+                                                 "reboot_required":  false,
+                                                 "score":  89,
+                                                 "title":  "Intel I219-V/LM 鏉胯浇鍗冨厗缃戝崱",
+                                                 "vendor":  "Intel",
+                                                 "signed":  true,
+                                                 "category":  "lan",
+                                                 "whql":  true,
+                                                 "rollback":  true,
+                                                 "installOrder":  32,
+                                                 "priority":  92,
+                                                 "risk":  "low",
+                                                 "url":  "https://github.com/yanbai9188-oss/qudong/releases/download/v1.0.0/intel_lan_i219.zip",
+                                                 "success_rate":  0.94,
+                                                 "id":  "intel_lan_i219"
+                                             },
+                     "Seed_Intel_WiFi_8260":  {
+                                                  "url":  "https://github.com/yanbai9188-oss/qudong/releases/download/v1.0.0/intel_wifi_8260.zip",
+                                                  "rollback":  true,
+                                                  "id":  "intel_wifi_8260",
+                                                  "priority":  94,
+                                                  "whql":  true,
+                                                  "version":  "22.40.0.7",
+                                                  "signed":  true,
+                                                  "win10_preferred":  true,
+                                                  "title":  "Intel WiFi AC 8260/8265 (Win10 甯歌)",
+                                                  "success_rate":  0.96,
+                                                  "reboot_required":  false,
+                                                  "vendor":  "Intel",
+                                                  "verify":  "wifi",
+                                                  "risk":  "low",
+                                                  "category":  "wifi",
+                                                  "hwids":  [
+                                                                "PCI\\VEN_8086\u0026DEV_24FD",
+                                                                "PCI\\VEN_8086\u0026DEV_24F3",
+                                                                "PCI\\VEN_8086\u0026DEV_24F4",
+                                                                "PCI\\VEN_8086\u0026DEV_24FB"
+                                                            ],
+                                                  "confidence":  "high",
+                                                  "installOrder":  28,
+                                                  "conflicts":  [
+                                                                    "intel_wifi",
+                                                                    "intel_wifi_7260"
+                                                                ],
+                                                  "os":  [
+                                                             "win10",
+                                                             "win11"
+                                                         ],
+                                                  "sha256":  "f6c1e72c8789cdc5913273e600b908ee23e425a36dfc19d1a11f453d8a064b73",
+                                                  "depends":  [
+                                                                  "intel_mei"
+                                                              ],
+                                                  "score":  90
+                                              },
+                     "Seed_Realtek_CardReader":  {
+                                                     "confidence":  "high",
+                                                     "win10_preferred":  true,
+                                                     "sha256":  "91b1152b45923bb12c805a4415c238e388110ed9c8fe298c04f587cfafe569e9",
+                                                     "verify":  "enum",
+                                                     "version":  "10.0.22000.31274",
+                                                     "os":  [
+                                                                "win10",
+                                                                "win11"
+                                                            ],
+                                                     "hwids":  [
+                                                                   "PCI\\VEN_10EC\u0026DEV_5229",
+                                                                   "PCI\\VEN_10EC\u0026DEV_522A",
+                                                                   "PCI\\VEN_10EC\u0026DEV_5249",
+                                                                   "PCI\\VEN_10EC\u0026DEV_5289",
+                                                                   "PCI\\VEN_10EC\u0026DEV_5209"
+                                                               ],
+                                                     "reboot_required":  false,
+                                                     "score":  86,
+                                                     "title":  "Realtek 璇诲崱鍣?RTS52xx",
+                                                     "vendor":  "Realtek",
+                                                     "signed":  true,
+                                                     "category":  "storage",
+                                                     "whql":  true,
+                                                     "rollback":  true,
+                                                     "installOrder":  55,
+                                                     "priority":  75,
+                                                     "risk":  "low",
+                                                     "url":  "https://github.com/yanbai9188-oss/qudong/releases/download/v1.0.0/realtek_cardreader.zip",
+                                                     "success_rate":  0.91,
+                                                     "id":  "realtek_cardreader"
+                                                 }
                  },
     "target_os":  [
                       "win10",
