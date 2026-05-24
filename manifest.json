@@ -1,8 +1,8 @@
 ﻿{
     "schema_version":  3,
-    "version":  "1.0.0",
+    "version":  "1.1.0",
     "updated":  "2026-05-24",
-    "description":  "CIODIY driver manifest v3 - yanbai9188-oss/qudong",
+    "description":  "CIODIY driver manifest v3 - Win10/Win11, Win10-first batch reinstall",
     "repository":  "https://github.com/yanbai9188-oss/qudong",
     "release":  "v1.0.0",
     "mirrors":  [
@@ -24,7 +24,11 @@
                                                     "hwids":  [
                                                                   "PCI\\VEN_8086\u0026DEV_43A3",
                                                                   "PCI\\VEN_8086\u0026DEV_43A4"
-                                                              ]
+                                                              ],
+                                                    "os":  [
+                                                               "win10",
+                                                               "win11"
+                                                           ]
                                                 },
                      "Seed_Intel_SerialIO":  {
                                                  "url":  "https://github.com/yanbai9188-oss/qudong/releases/download/v1.0.0/intel_serialio.zip",
@@ -42,7 +46,11 @@
                                                                "PCI\\VEN_8086\u0026DEV_43A8",
                                                                "PCI\\VEN_8086\u0026DEV_A0A8",
                                                                "PCI\\VEN_8086\u0026DEV_9A60"
-                                                           ]
+                                                           ],
+                                                 "os":  [
+                                                            "win10",
+                                                            "win11"
+                                                        ]
                                              },
                      "Seed_Intel_Bluetooth":  {
                                                   "url":  "https://github.com/yanbai9188-oss/qudong/releases/download/v1.0.0/intel_bluetooth.zip",
@@ -60,7 +68,11 @@
                                                                 "USB\\VID_8087\u0026PID_07DC",
                                                                 "USB\\VID_8087\u0026PID_0026",
                                                                 "USB\\VID_8087\u0026PID_0032"
-                                                            ]
+                                                            ],
+                                                  "os":  [
+                                                             "win10",
+                                                             "win11"
+                                                         ]
                                               },
                      "Seed_Intel_WiFi":  {
                                              "id":  "intel_wifi",
@@ -87,7 +99,11 @@
                                                            "PCI\\VEN_8086\u0026DEV_7A70",
                                                            "PCI\\VEN_8086\u0026DEV_54F0",
                                                            "PCI\\VEN_8086\u0026DEV_7740"
-                                                       ]
+                                                       ],
+                                             "os":  [
+                                                        "win10",
+                                                        "win11"
+                                                    ]
                                          },
                      "Seed_Intel_WiFi_7260":  {
                                                   "id":  "intel_wifi_7260",
@@ -116,7 +132,12 @@
                                                   "hwids":  [
                                                                 "PCI\\VEN_8086\u0026DEV_08B1",
                                                                 "PCI\\VEN_8086\u0026DEV_08B2"
-                                                            ]
+                                                            ],
+                                                  "os":  [
+                                                             "win10",
+                                                             "win11"
+                                                         ],
+                                                  "win10_preferred":  true
                                               },
                      "Seed_Intel_Bluetooth_7260":  {
                                                        "id":  "intel_bluetooth_7260",
@@ -138,7 +159,12 @@
                                                        "title":  "Intel Bluetooth 7260 (Legacy)",
                                                        "hwids":  [
                                                                      "USB\\VID_8087\u0026PID_07DC"
-                                                                 ]
+                                                                 ],
+                                                       "os":  [
+                                                                  "win10",
+                                                                  "win11"
+                                                              ],
+                                                       "win10_preferred":  true
                                                    },
                      "Seed_Realtek_LAN_8168":  {
                                                    "id":  "realtek_lan_8168",
@@ -159,7 +185,11 @@
                                                    "title":  "Realtek 8168 专用包",
                                                    "hwids":  [
                                                                  "PCI\\VEN_10EC\u0026DEV_8168"
-                                                             ]
+                                                             ],
+                                                   "os":  [
+                                                              "win10",
+                                                              "win11"
+                                                          ]
                                                },
                      "Seed_Intel_MEI":  {
                                             "id":  "intel_mei",
@@ -180,7 +210,11 @@
                                             "hwids":  [
                                                           "PCI\\VEN_8086\u0026DEV_43E0",
                                                           "PCI\\VEN_8086\u0026DEV_A0EB"
-                                                      ]
+                                                      ],
+                                            "os":  [
+                                                       "win10",
+                                                       "win11"
+                                                   ]
                                         },
                      "Seed_Intel_RST":  {
                                             "url":  "https://github.com/yanbai9188-oss/qudong/releases/download/v1.0.0/intel_rst.zip",
@@ -199,7 +233,11 @@
                                                           "PCI\\VEN_8086\u0026DEV_467F",
                                                           "PCI\\VEN_8086\u0026DEV_A77F",
                                                           "PCI\\VEN_8086\u0026DEV_7D0B"
-                                                      ]
+                                                      ],
+                                            "os":  [
+                                                       "win10",
+                                                       "win11"
+                                                   ]
                                         },
                      "Seed_Intel_DTT":  {
                                             "url":  "https://github.com/yanbai9188-oss/qudong/releases/download/v1.0.0/intel_dtt.zip",
@@ -218,7 +256,11 @@
                                                           "PCI\\VEN_8086\u0026DEV_A0DE",
                                                           "PCI\\VEN_8086\u0026DEV_98A4",
                                                           "ACPI\\INT3400"
-                                                      ]
+                                                      ],
+                                            "os":  [
+                                                       "win10",
+                                                       "win11"
+                                                   ]
                                         },
                      "Seed_Realtek_LAN":  {
                                               "url":  "https://github.com/yanbai9188-oss/qudong/releases/download/v1.0.0/realtek_lan.zip",
@@ -235,7 +277,11 @@
                                               "hwids":  [
                                                             "PCI\\VEN_10EC\u0026DEV_8168",
                                                             "PCI\\VEN_10EC\u0026DEV_8125"
-                                                        ]
+                                                        ],
+                                              "os":  [
+                                                         "win10",
+                                                         "win11"
+                                                     ]
                                           },
                      "Seed_Realtek_Audio":  {
                                                 "id":  "realtek_audio",
@@ -259,7 +305,11 @@
                                                 "hwids":  [
                                                               "HDAUDIO\\FUNC_01\u0026VEN_10EC\u0026DEV_0897",
                                                               "HDAUDIO\\FUNC_01\u0026VEN_10EC\u0026DEV_0269"
-                                                          ]
+                                                          ],
+                                                "os":  [
+                                                           "win10",
+                                                           "win11"
+                                                       ]
                                             },
                      "Seed_AMD_Chipset":  {
                                               "url":  "https://github.com/yanbai9188-oss/qudong/releases/download/v1.0.0/amd_chipset.zip",
@@ -280,7 +330,11 @@
                                                             "PCI\\VEN_1022\u0026DEV_780B",
                                                             "PCI\\VEN_1022\u0026DEV_1482",
                                                             "PCI\\VEN_1022\u0026DEV_1671"
-                                                        ]
+                                                        ],
+                                              "os":  [
+                                                         "win10",
+                                                         "win11"
+                                                     ]
                                           },
                      "Seed_Intel_SST":  {
                                             "id":  "intel_sst",
@@ -306,7 +360,11 @@
                                                           "PCI\\VEN_8086\u0026DEV_51CA",
                                                           "PCI\\VEN_8086\u0026DEV_7A50",
                                                           "HDAUDIO\\FUNC_01\u0026VEN_8086\u0026DEV_2812"
-                                                      ]
+                                                      ],
+                                            "os":  [
+                                                       "win10",
+                                                       "win11"
+                                                   ]
                                         },
                      "Seed_Intel_Platform":  {
                                                  "url":  "https://github.com/yanbai9188-oss/qudong/releases/download/v1.0.0/intel_platform.zip",
@@ -323,7 +381,11 @@
                                                  "hwids":  [
                                                                "SWD\\DRIVERENUM\\ICLSCLIENT",
                                                                "SWD\\DRIVERENUM\\DAL"
-                                                           ]
+                                                           ],
+                                                 "os":  [
+                                                            "win10",
+                                                            "win11"
+                                                        ]
                                              },
                      "Seed_Intel_DisplayAudio":  {
                                                      "id":  "intel_display_audio",
@@ -349,7 +411,11 @@
                                                      "title":  "Intel Display Audio（含核显完整包，约 1.2GB）",
                                                      "hwids":  [
                                                                    "HDAUDIO\\FUNC_01\u0026VEN_8086\u0026DEV_2812"
-                                                               ]
+                                                               ],
+                                                     "os":  [
+                                                                "win10",
+                                                                "win11"
+                                                            ]
                                                  },
                      "Seed_Intel_Graphics":  {
                                                  "id":  "intel_graphics",
@@ -369,7 +435,7 @@
                                                  "installOrder":  35,
                                                  "verify":  "gpu",
                                                  "rollback":  true,
-                                                 "title":  "Intel 核显 UHD / Iris Xe (DCH)",
+                                                 "title":  "Intel 核显 UHD / Iris Xe (Win10/11 DCH)",
                                                  "hwids":  [
                                                                "PCI\\VEN_8086\u0026DEV_9A40",
                                                                "PCI\\VEN_8086\u0026DEV_9A49",
@@ -384,8 +450,30 @@
                                                                "PCI\\VEN_8086\u0026DEV_46D0",
                                                                "PCI\\VEN_8086\u0026DEV_46D2",
                                                                "PCI\\VEN_8086\u0026DEV_A7A0",
-                                                               "PCI\\VEN_8086\u0026DEV_A7A1"
-                                                           ]
+                                                               "PCI\\VEN_8086\u0026DEV_A7A1",
+                                                               "PCI\\VEN_8086\u0026DEV_5912",
+                                                               "PCI\\VEN_8086\u0026DEV_5916",
+                                                               "PCI\\VEN_8086\u0026DEV_5926",
+                                                               "PCI\\VEN_8086\u0026DEV_3E9B",
+                                                               "PCI\\VEN_8086\u0026DEV_3E98",
+                                                               "PCI\\VEN_8086\u0026DEV_3EA0",
+                                                               "PCI\\VEN_8086\u0026DEV_9BC4",
+                                                               "PCI\\VEN_8086\u0026DEV_9BC5",
+                                                               "PCI\\VEN_8086\u0026DEV_9BC8",
+                                                               "PCI\\VEN_8086\u0026DEV_3E92",
+                                                               "PCI\\VEN_8086\u0026DEV_3E93",
+                                                               "PCI\\VEN_8086\u0026DEV_1916"
+                                                           ],
+                                                 "os":  [
+                                                            "win10",
+                                                            "win11"
+                                                        ]
                                              }
-                 }
+                 },
+    "target_os":  [
+                      "win10",
+                      "win11"
+                  ],
+    "primary_os":  "win10",
+    "min_os_build":  10240
 }
