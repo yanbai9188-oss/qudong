@@ -1,7 +1,7 @@
 ﻿{
     "schema_version":  3,
     "version":  "1.0.0",
-    "updated":  "2026-05-24",
+    "updated":  "2026-05-25",
     "description":  "CIODIY driver manifest v3 - yanbai9188-oss/qudong",
     "repository":  "https://github.com/yanbai9188-oss/qudong",
     "release":  "v1.0.0",
@@ -283,17 +283,24 @@
                                                         ]
                                           },
                      "Seed_Intel_SST":  {
+                                            "id":  "intel_sst",
                                             "url":  "https://github.com/yanbai9188-oss/qudong/releases/download/v1.0.0/intel_sst.zip",
                                             "version":  "11.2.0.15",
                                             "sha256":  "8b6eedfafe6b9f1be7521fc45063ada87e9364d89333c9f476bc9398b16727d8",
                                             "category":  "audio",
                                             "vendor":  "Intel",
+                                            "score":  91,
+                                            "confidence":  "high",
+                                            "success_rate":  0.95,
                                             "priority":  85,
                                             "risk":  "low",
                                             "signed":  true,
                                             "whql":  true,
                                             "reboot_required":  false,
                                             "title":  "Intel Smart Sound Technology",
+                                            "conflicts":  [
+                                                              "intel_display_audio"
+                                                          ],
                                             "hwids":  [
                                                           "PCI\\VEN_8086\u0026DEV_A0C8",
                                                           "PCI\\VEN_8086\u0026DEV_51CA",
@@ -318,6 +325,32 @@
                                                                "SWD\\DRIVERENUM\\DAL"
                                                            ]
                                              },
+                     "Seed_Intel_DisplayAudio":  {
+                                                       "id":  "intel_display_audio",
+                                                       "url":  "https://github.com/yanbai9188-oss/qudong/releases/download/v1.0.0/intel_display_audio.zip",
+                                                       "version":  "2023.02",
+                                                       "sha256":  "257a9aada82c57d9ccbce61292964ae97c12f35b6d7a3d45d59f0eff97f512de",
+                                                       "category":  "audio",
+                                                       "vendor":  "Intel",
+                                                       "score":  72,
+                                                       "confidence":  "medium",
+                                                       "success_rate":  0.88,
+                                                       "priority":  70,
+                                                       "risk":  "medium",
+                                                       "signed":  true,
+                                                       "whql":  true,
+                                                       "reboot_required":  false,
+                                                       "installOrder":  45,
+                                                       "verify":  "audio",
+                                                       "rollback":  true,
+                                                       "conflicts":  [
+                                                                         "intel_sst"
+                                                                     ],
+                                                       "title":  "Intel Display Audio（含核显完整包，约 1.2GB）",
+                                                       "hwids":  [
+                                                                     "HDAUDIO\\FUNC_01\u0026VEN_8086\u0026DEV_2812"
+                                                                 ]
+                                                   },
                      "Seed_Intel_Graphics":  {
                                                  "url":  "https://github.com/yanbai9188-oss/qudong/releases/download/v1.0.0/intel_graphics.zip",
                                                  "version":  "",
