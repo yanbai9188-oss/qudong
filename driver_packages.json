@@ -1,7 +1,7 @@
 ﻿{
     "schema_version":  3,
     "version":  "1.3.0",
-    "updated":  "2026-05-24",
+    "updated":  "2026-05-25",
     "description":  "CIODIY driver manifest v3 - Win10/Win11, release v1.1.0 unified URLs",
     "repository":  "https://github.com/yanbai9188-oss/qudong",
     "release":  "v1.1.0",
@@ -611,7 +611,7 @@
                      "Seed_HP_Printer_PCL":  {
                                                  "confidence":  "medium",
                                                  "win10_preferred":  true,
-                                                 "sha256":  "6ad3eb56a635182a1e592baec612142c7d841c8e42cf485c29d3e53459b4a7cf",
+                                                 "sha256":  "",
                                                  "verify":  "enum",
                                                  "version":  "10.0.22621.1",
                                                  "os":  [
@@ -641,7 +641,7 @@
                      "Seed_Synaptics_TouchPad":  {
                                                      "confidence":  "high",
                                                      "win10_preferred":  true,
-                                                     "sha256":  "53a03be436e3c564335a3ea4d0978c320e24f8f7b06cf61e42fbe2f4aa441da6",
+                                                     "sha256":  "",
                                                      "verify":  "enum",
                                                      "version":  "19.5.29.2",
                                                      "os":  [
@@ -674,7 +674,7 @@
                      "Seed_NVIDIA_DCH":  {
                                              "confidence":  "high",
                                              "win10_preferred":  true,
-                                             "sha256":  "dcf2f99c4d136d0d4f9555506b49770822716cfa5459155b963f58abc84622c6",
+                                             "sha256":  "",
                                              "verify":  "gpu",
                                              "version":  "31.0.15.5123",
                                              "os":  [
@@ -713,7 +713,7 @@
                      "Seed_ELAN_TouchPad":  {
                                                 "confidence":  "high",
                                                 "win10_preferred":  true,
-                                                "sha256":  "480c639f9deea7b80e30009c8bc67d9ed7cd9fbca885642e0249996b7703b445",
+                                                "sha256":  "",
                                                 "verify":  "enum",
                                                 "version":  "18.6.30.2",
                                                 "os":  [
@@ -745,7 +745,7 @@
                      "Seed_Canon_Printer":  {
                                                 "confidence":  "medium",
                                                 "win10_preferred":  true,
-                                                "sha256":  "ca1eee129389b2a4c5c79e579f5d62555541080de3acd23c607c1ebb4537ae32",
+                                                "sha256":  "",
                                                 "verify":  "enum",
                                                 "version":  "10.0.22621.1",
                                                 "os":  [

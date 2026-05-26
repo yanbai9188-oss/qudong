@@ -1,4 +1,4 @@
-#requires -Version 5.1
+﻿#requires -Version 5.1
 # Build ZIP packages from Drivers\ for GitHub Release upload
 $ErrorActionPreference = 'Stop'
 

@@ -1,10 +1,11 @@
-#requires -Version 5.1
+﻿#requires -Version 5.1
 # Build ZIPs, refresh manifest sha256, upload to GitHub Release, push manifest
 param(
     [string]$Tag = 'v1.1.0',
     [string]$Repo = 'yanbai9188-oss/qudong',
     [switch]$SkipUpload,
-    [switch]$SkipPush
+    [switch]$SkipPush,
+    [switch]$SkipBuild
 )
 
 $ErrorActionPreference = 'Stop'
@@ -12,8 +13,12 @@ $root = Split-Path $PSScriptRoot -Parent
 $manifestPath = Join-Path $root 'driver_packages.json'
 $pkgScript = Join-Path $PSScriptRoot 'Build-ReleasePackages.ps1'
 
-Write-Host '=== Build release packages ===' -ForegroundColor Cyan
-& $pkgScript
+if (-not $SkipBuild) {
+    Write-Host '=== Build release packages ===' -ForegroundColor Cyan
+    & $pkgScript
+} else {
+    Write-Host '=== SkipBuild: 使用已有 ZIP / manifest ===' -ForegroundColor Yellow
+}
 
 $packagesDir = Join-Path $PSScriptRoot 'packages'
 $hashByZip = @{}
