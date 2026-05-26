@@ -640,7 +640,7 @@
                      "Seed_HP_Printer_PCL":  {
                                                  "confidence":  "medium",
                                                  "win10_preferred":  true,
-                                                 "sha256":  "",
+                                                 "sha256":  "addc01751e2a568fe79764b81938f82adf3d4c5f9d372fdac79a21a0993de190",
                                                  "verify":  "enum",
                                                  "version":  "10.0.22621.1",
                                                  "os":  [
@@ -671,7 +671,7 @@
                      "Seed_Synaptics_TouchPad":  {
                                                      "confidence":  "high",
                                                      "win10_preferred":  true,
-                                                     "sha256":  "",
+                                                     "sha256":  "53a03be436e3c564335a3ea4d0978c320e24f8f7b06cf61e42fbe2f4aa441da6",
                                                      "verify":  "enum",
                                                      "version":  "19.5.29.2",
                                                      "os":  [
@@ -705,7 +705,7 @@
                      "Seed_NVIDIA_DCH":  {
                                              "confidence":  "high",
                                              "win10_preferred":  true,
-                                             "sha256":  "",
+                                             "sha256":  null,
                                              "verify":  "gpu",
                                              "version":  "31.0.15.5123",
                                              "os":  [
@@ -737,15 +737,18 @@
                                              "installOrder":  38,
                                              "priority":  82,
                                              "risk":  "medium",
-                                             "url":  "https://github.com/yanbai9188-oss/qudong/releases/download/v1.1.0/nvidia_dch_gpu.zip",
+                                             "url":  null,
                                              "success_rate":  0.92,
                                              "id":  "nvidia_dch_gpu",
-                                             "deviceClass":  "display"
+                                             "deviceClass":  "display",
+                                             "local_only":  false,
+                                             "catalog_fallback":  true,
+                                             "note":  "Too large for GitHub Release; install via Windows Update Catalog or manually from nvidia.com"
                                          },
                      "Seed_ELAN_TouchPad":  {
                                                 "confidence":  "high",
                                                 "win10_preferred":  true,
-                                                "sha256":  "",
+                                                "sha256":  "480c639f9deea7b80e30009c8bc67d9ed7cd9fbca885642e0249996b7703b445",
                                                 "verify":  "enum",
                                                 "version":  "18.6.30.2",
                                                 "os":  [
@@ -778,7 +781,7 @@
                      "Seed_Canon_Printer":  {
                                                 "confidence":  "medium",
                                                 "win10_preferred":  true,
-                                                "sha256":  "",
+                                                "sha256":  "ca1eee129389b2a4c5c79e579f5d62555541080de3acd23c607c1ebb4537ae32",
                                                 "verify":  "enum",
                                                 "version":  "10.0.22621.1",
                                                 "os":  [
