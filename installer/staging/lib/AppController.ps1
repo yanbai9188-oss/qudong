@@ -8,6 +8,10 @@ function New-AppSessionState {
         FullFixPlan   = @()
         Scenario      = 'all'
         IsBusy        = $false
+        WorkerActive  = $false
+        WorkerStarted = $null
+        LastProgressAt = $null
+        ProgressHeartbeatToken = $null
         GridRows      = @()
         RepairSummary = $null
         RepoHealth    = $null

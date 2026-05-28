@@ -37,7 +37,7 @@ try {
 } catch {}
 
 $script:AppRoot = $PSScriptRoot
-$script:AppVersion = '2.2.2'
+$script:AppVersion = '2.2.3'
 $global:DriverBoosterAppRoot = $script:AppRoot
 
 . (Join-Path $PSScriptRoot 'lib\Utils.ps1')

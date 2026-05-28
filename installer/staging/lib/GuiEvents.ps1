@@ -1,33 +1,4 @@
-﻿# GUI event bindings (v1.7.0) — calls Engine API only, never lib internals
-
-function Start-CIODIYBackgroundHealthAnalysis {
-    param([switch]$QuickFirst)
-
-    $ctx = Get-CIODIYGuiContext
-    Start-CIODIYGuiWorker -DoWork {
-        if ($QuickFirst) {
-            return @{ Phase = 'quick'; Health = (Invoke-DriverHealthEngine -QuickOnly) }
-        }
-        $health = Invoke-DriverHealthEngine -RunScan -FastMatch -OnLog $ctx.LogCallback
-        return @{ Phase = 'full'; Health = $health }
-    } -OnComplete {
-        param($data)
-        if (-not $data -or -not $data.Health) { return }
-        Update-CIODIYDriverHealthPanel -Health $data.Health
-        if ($data.Phase -eq 'full') {
-            Write-CIODIYGuiLog -Message ("健康分析完成：{0}%" -f $data.Health.HealthScore)
-            if ($data.Health.ScanResults -and $data.Health.FixPlan) {
-                Update-CIODIYDriverGrid -scanResults $data.Health.ScanResults -fixPlan $data.Health.FixPlan -Scenario 'all'
-            }
-        } else {
-            Write-CIODIYGuiLog -Message ("快速健康估计：{0}%" -f $data.Health.HealthScore)
-            Start-CIODIYBackgroundHealthAnalysis
-        }
-    } -OnError {
-        param($err)
-        Write-CIODIYGuiLog -Message ("健康分析跳过：{0}" -f $err)
-    }
-}
+﻿# GUI event bindings — calls Engine API only, never lib internals
 
 function Invoke-CIODIYScenarioQuickFix {
     param([Parameter(Mandatory)][string]$Scenario)
@@ -43,9 +14,10 @@ function Invoke-CIODIYScenarioQuickFix {
 
     Set-CIODIYGuiBusyState -Busy $true -ProgressText ("正在扫描：{0}..." -f $info.Label)
     if ($progress) { $progress.Value = 10 }
+    Start-CIODIYProgressHeartbeat -BaseText ("正在扫描：{0}" -f $info.Label) -MaxValue 86
     Update-CIODIYScenarioBanner -Scenario $Scenario
 
-    Start-CIODIYGuiWorker -DoWork {
+    $started = Start-CIODIYGuiWorker -DoWork {
         Invoke-AppScan -PassThru -FastMatch -Scenario $Scenario -IncludeOutdated:$includeOut -OnLog $ctx.LogCallback
     } -OnComplete {
         param($result)
@@ -64,6 +36,10 @@ function Invoke-CIODIYScenarioQuickFix {
         param($err)
         Write-CIODIYGuiLog -Message ("场景扫描失败：{0}" -f $err)
         Set-CIODIYGuiBusyState -Busy $false
+    } -TimeoutSeconds 180
+    if (-not $started) {
+        Set-CIODIYGuiBusyState -Busy $false -ProgressText '后台任务正在准备，请稍后再试'
+        Show-CIODIYToast -Message '后台任务正在准备，请稍后再点扫描。' -Level Warning -DurationMs 4500
     }
 }
 
@@ -132,7 +108,7 @@ function Invoke-CIODIYAppFix {
         }
     }
 
-    Start-CIODIYGuiWorker -DoWork {
+    $started = Start-CIODIYGuiWorker -DoWork {
         if ($isAdmin) {
             # ── Direct admin path ────────────────────────────────────────────
             $fixResult = Invoke-DriverFixEngine -FixPlan $plan `
@@ -358,6 +334,10 @@ function Invoke-CIODIYAppFix {
         if ($sub) { $sub.Text = '修复失败 — 请查看日志' }
         Set-CIODIYGuiBusyState -Busy $false
         Show-CIODIYToast -Message ("修复失败：{0}" -f $err) -Level Error -DurationMs 7000
+    } -TimeoutSeconds 900
+    if (-not $started) {
+        Set-CIODIYGuiBusyState -Busy $false -ProgressText '后台任务正在准备，请稍后再试'
+        Show-CIODIYToast -Message '后台任务正在准备，请稍后再试。' -Level Warning -DurationMs 4500
     }
 }
 
@@ -403,7 +383,7 @@ function Invoke-CIODIYDeployFromGui {
     Set-CIODIYGuiBusyState -Busy $true -ProgressText '装机模式：正在扫描...'
     if ($progress) { $progress.Value = 8 }
 
-    Start-CIODIYGuiWorker -DoWork {
+    $started = Start-CIODIYGuiWorker -DoWork {
         Invoke-DeployModeEngine -AutoFix:$autoFix -RebootIfNeeded:$reboot -ExportReport:$report `
             -Silent:$silent -FastMatch -Scenario 'all' -IncludeOutdated:$includeOut `
             -CreateRestorePoint:$restore -BackupFirst:$backup -RollbackOnError:$rollback `
@@ -445,6 +425,10 @@ function Invoke-CIODIYDeployFromGui {
         param($err)
         Write-CIODIYGuiLog -Message ("装机模式失败：{0}" -f $err)
         Set-CIODIYGuiBusyState -Busy $false
+    } -TimeoutSeconds 900
+    if (-not $started) {
+        Set-CIODIYGuiBusyState -Busy $false -ProgressText '后台任务正在准备，请稍后再试'
+        Show-CIODIYToast -Message '后台任务正在准备，请稍后再试。' -Level Warning -DurationMs 4500
     }
 }
 
@@ -455,10 +439,6 @@ function Register-CIODIYGuiEvents {
     Register-CIODIYGuiNavigationEvents
 
     # ── Stat-card click handlers ──────────────────────────────────────────────
-
-    # Helper: check if a scan has been completed (GridRows populated)
-    # $ctx.State.ScanCompleted is never set; use GridRows.Count instead.
-    $hasScanData = { @($ctx.State.GridRows).Count -gt 0 }
 
     # 驱动健康 → 展示所有问题（清除过滤），滚动到问题列表
     $cardHealth = Get-CIODIYGuiControl -Name 'CardHealth'
@@ -537,7 +517,7 @@ function Register-CIODIYGuiEvents {
         $btnRepoRepair.Add_Click({
             if ($ctx.State.IsBusy) { return }
             Set-CIODIYGuiBusyState -Busy $true -ProgressText '正在修复驱动库...'
-            Start-CIODIYGuiWorker -DoWork {
+            $started = Start-CIODIYGuiWorker -DoWork {
                 Invoke-DriverRepositoryRepairEngine -OnLog $ctx.LogCallback
             } -OnComplete {
                 param($result)
@@ -553,6 +533,10 @@ function Register-CIODIYGuiEvents {
                 param($err)
                 Write-CIODIYGuiLog -Message ("驱动库修复失败：{0}" -f $err)
                 Set-CIODIYGuiBusyState -Busy $false
+            } -TimeoutSeconds 180
+            if (-not $started) {
+                Set-CIODIYGuiBusyState -Busy $false -ProgressText '后台任务正在准备，请稍后再试'
+                Show-CIODIYToast -Message '后台任务正在准备，请稍后再试。' -Level Warning -DurationMs 4500
             }
         })
     }
@@ -566,7 +550,9 @@ function Register-CIODIYGuiEvents {
         if ($txtSubtitle) { $txtSubtitle.Text = 'Win10/Win11 智能驱动检测 · 扫描后一键修复' }
 
         $deferBootstrap = {
-            Start-CIODIYGuiWorker -DoWork {
+            $bootCtx = Get-CIODIYGuiContext
+            if ($bootCtx.State.IsBusy -or $bootCtx.State.WorkerActive) { return }
+            [void](Start-CIODIYGuiWorker -DoWork {
                 Invoke-AppBootstrapEngine -OnLog $ctx.LogCallback -Background
             } -OnComplete {
                 param($manifest)
@@ -580,7 +566,7 @@ function Register-CIODIYGuiEvents {
             } -OnError {
                 param($err)
                 Write-CIODIYGuiLog -Message ("驱动库同步跳过: {0}" -f $err)
-            }
+            } -TimeoutSeconds 120)
         }
 
         $timer = New-Object System.Windows.Threading.DispatcherTimer
@@ -604,16 +590,18 @@ function Register-CIODIYGuiEvents {
             $includeOut = if ($chkOutdated) { [bool]$chkOutdated.IsChecked } else { $false }
             Set-CIODIYGuiBusyState -Busy $true -ProgressText '正在扫描设备...'
             Set-CIODIYGuiProgress -Value 5
+            Start-CIODIYProgressHeartbeat -BaseText '正在扫描硬件设备，请稍候' -MaxValue 86
             if ($txtSubtitle) { $txtSubtitle.Text = '正在枚举硬件设备...' }
             Show-CIODIYToast -Message '正在扫描硬件，请稍候...' -Level Info
             $scanWindow = $ctx.Window
-            Start-CIODIYGuiWorker -DoWork {
+            $started = Start-CIODIYGuiWorker -DoWork {
                 # Build a scan-progress callback that posts UI updates via the Dispatcher.
                 # This runs in the worker runspace, so we capture $scanWindow explicitly.
                 $captured_scanWin = $scanWindow
                 $scanProgressCb = {
                     param($pct, $msg)
                     $cp = $pct; $cm = [string]$msg
+                    try { $ctx.State['LastProgressAt'] = Get-Date } catch {}
                     $cm = ($cm -replace '[\x00-\x1F\x7F]', '').Trim()
                     if (-not $cm) { $cm = '正在扫描...' }
                     try {
@@ -652,6 +640,11 @@ function Register-CIODIYGuiEvents {
                 $sub = Get-CIODIYGuiControl -Name 'TxtSubtitle'
                 if ($sub) { $sub.Text = 'Win10/Win11 智能驱动检测 · 扫描后一键修复' }
                 Show-CIODIYToast -Message ("扫描失败：{0}" -f $err) -Level Error -DurationMs 6000
+            } -TimeoutSeconds 180
+            if (-not $started) {
+                Set-CIODIYGuiBusyState -Busy $false -ProgressText '后台任务正在准备，请稍后再试'
+                if ($txtSubtitle) { $txtSubtitle.Text = 'Win10/Win11 智能驱动检测 · 扫描后一键修复' }
+                Show-CIODIYToast -Message '后台任务正在准备，请稍后再点扫描。' -Level Warning -DurationMs 4500
             }
         })
     }
@@ -667,12 +660,14 @@ function Register-CIODIYGuiEvents {
             $includeOut = if ($chkOutdated) { [bool]$chkOutdated.IsChecked } else { $false }
             Set-CIODIYGuiBusyState -Busy $true -ProgressText '正在扫描全部设备...'
             if ($progress) { $progress.Value = 5 }
+            Start-CIODIYProgressHeartbeat -BaseText '正在扫描全部设备，请稍候' -MaxValue 86
             $scanWin2 = $ctx.Window
-            Start-CIODIYGuiWorker -DoWork {
+            $started = Start-CIODIYGuiWorker -DoWork {
                 $captured_scanWin2 = $scanWin2
                 $scanProgressCb2 = {
                     param($pct, $msg)
                     $cp = $pct; $cm = ([string]$msg -replace '[\x00-\x1F\x7F]', '').Trim()
+                    try { $ctx.State['LastProgressAt'] = Get-Date } catch {}
                     if (-not $cm) { $cm = '正在扫描...' }
                     try {
                         [void]$captured_scanWin2.Dispatcher.BeginInvoke([System.Action]({
@@ -695,6 +690,10 @@ function Register-CIODIYGuiEvents {
                 param($err)
                 Write-CIODIYGuiLog -Message ("扫描失败：{0}" -f $err)
                 Set-CIODIYGuiBusyState -Busy $false
+            } -TimeoutSeconds 180
+            if (-not $started) {
+                Set-CIODIYGuiBusyState -Busy $false -ProgressText '后台任务正在准备，请稍后再试'
+                Show-CIODIYToast -Message '后台任务正在准备，请稍后再点扫描。' -Level Warning -DurationMs 4500
             }
         })
     }
@@ -756,7 +755,7 @@ function Register-CIODIYGuiEvents {
             $msg = "上次修复时间：$($summary.TimeLabel)`n安装驱动：$($summary.DriverNames)`n结果：成功 $($summary.SuccessCount) 项，失败 $($summary.FailCount) 项`n`n确定回滚上次修复？"
             if ([System.Windows.MessageBox]::Show($msg, '回滚上次修复', 'YesNo', 'Question') -ne 'Yes') { return }
             Set-CIODIYGuiBusyState -Busy $true -ProgressText '正在回滚...'
-            Start-CIODIYGuiWorker -DoWork {
+            $started = Start-CIODIYGuiWorker -DoWork {
                 Invoke-DriverRollbackEngine -Last -OnLog $ctx.LogCallback
             } -OnComplete {
                 param($results)
@@ -766,6 +765,10 @@ function Register-CIODIYGuiEvents {
                 param($err)
                 Write-CIODIYGuiLog -Message ("回滚失败：{0}" -f $err)
                 Set-CIODIYGuiBusyState -Busy $false
+            } -TimeoutSeconds 300
+            if (-not $started) {
+                Set-CIODIYGuiBusyState -Busy $false -ProgressText '后台任务正在准备，请稍后再试'
+                Show-CIODIYToast -Message '后台任务正在准备，请稍后再试。' -Level Warning -DurationMs 4500
             }
         })
     }
@@ -775,7 +778,7 @@ function Register-CIODIYGuiEvents {
         $btnSync.Add_Click({
             if ($ctx.State.IsBusy) { return }
             Set-CIODIYGuiBusyState -Busy $true -ProgressText '正在同步驱动镜像...'
-            Start-CIODIYGuiWorker -DoWork {
+            $started = Start-CIODIYGuiWorker -DoWork {
                 Invoke-DriverSyncEngine -OnLog $ctx.LogCallback
             } -OnComplete {
                 param($manifest)
@@ -788,6 +791,10 @@ function Register-CIODIYGuiEvents {
                 param($err)
                 Write-CIODIYGuiLog -Message ("同步失败：{0}" -f $err)
                 Set-CIODIYGuiBusyState -Busy $false
+            } -TimeoutSeconds 300
+            if (-not $started) {
+                Set-CIODIYGuiBusyState -Busy $false -ProgressText '后台任务正在准备，请稍后再试'
+                Show-CIODIYToast -Message '后台任务正在准备，请稍后再试。' -Level Warning -DurationMs 4500
             }
         })
     }
@@ -806,7 +813,7 @@ function Register-CIODIYGuiEvents {
             $chkRollback = Get-CIODIYGuiControl -Name 'ChkRollback'
             $rollback = if ($chkRollback) { [bool]$chkRollback.IsChecked } else { $false }
             Set-CIODIYGuiBusyState -Busy $true -ProgressText '正在安装本地驱动库...'
-            Start-CIODIYGuiWorker -DoWork {
+            $started = Start-CIODIYGuiWorker -DoWork {
                 Invoke-DriverInstallEngine -LocalLibraryOnly -RollbackOnError:$rollback -OnLog $ctx.LogCallback | Out-Null
             } -OnComplete {
                 Write-CIODIYGuiLog -Message '本地驱动库安装完成。'
@@ -815,6 +822,10 @@ function Register-CIODIYGuiEvents {
                 param($err)
                 Write-CIODIYGuiLog -Message ("安装失败：{0}" -f $err)
                 Set-CIODIYGuiBusyState -Busy $false
+            } -TimeoutSeconds 600
+            if (-not $started) {
+                Set-CIODIYGuiBusyState -Busy $false -ProgressText '后台任务正在准备，请稍后再试'
+                Show-CIODIYToast -Message '后台任务正在准备，请稍后再试。' -Level Warning -DurationMs 4500
             }
         })
     }
@@ -855,7 +866,7 @@ function Register-CIODIYGuiNavigationEvents {
             $msg = "时间：$($summary.TimeLabel)`n驱动：$($summary.DriverNames)`n`n确定回滚此事务？"
             if ([System.Windows.MessageBox]::Show($msg, '回滚事务', 'YesNo', 'Question') -ne 'Yes') { return }
             Set-CIODIYGuiBusyState -Busy $true -ProgressText '正在回滚...'
-            Start-CIODIYGuiWorker -DoWork {
+            $started = Start-CIODIYGuiWorker -DoWork {
                 Invoke-DriverRollbackEngine -TxId $tx.Id -OnLog $ctx.LogCallback
             } -OnComplete {
                 param($results)
@@ -866,6 +877,10 @@ function Register-CIODIYGuiNavigationEvents {
                 param($err)
                 Write-CIODIYGuiLog -Message ("回滚失败：{0}" -f $err)
                 Set-CIODIYGuiBusyState -Busy $false
+            } -TimeoutSeconds 300
+            if (-not $started) {
+                Set-CIODIYGuiBusyState -Busy $false -ProgressText '后台任务正在准备，请稍后再试'
+                Show-CIODIYToast -Message '后台任务正在准备，请稍后再试。' -Level Warning -DurationMs 4500
             }
         })
     }

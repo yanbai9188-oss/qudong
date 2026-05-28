@@ -129,6 +129,7 @@ function Set-CIODIYGuiProgress {
     param([double]$Value, [string]$Text = $null)
     $ctx = Get-CIODIYGuiContext
     if (-not $ctx) { return }
+    $ctx.State['LastProgressAt'] = Get-Date
     $progress = Get-CIODIYGuiControl -Name 'Progress'
     $txtProgress = Get-CIODIYGuiControl -Name 'TxtProgress'
     $txtPercent = Get-CIODIYGuiControl -Name 'TxtProgressPercent'
@@ -157,6 +158,65 @@ function Set-CIODIYGuiProgress {
     else { [void]$ctx.Window.Dispatcher.BeginInvoke([System.Action]$apply) }
 }
 
+function Start-CIODIYProgressHeartbeat {
+    param(
+        [string]$BaseText = '正在处理',
+        [double]$MaxValue = 88,
+        [int]$IntervalMs = 1200
+    )
+
+    $ctx = Get-CIODIYGuiContext
+    if (-not $ctx -or -not $ctx.Window) { return }
+
+    $token = [Guid]::NewGuid().ToString('N')
+    $ctx.State['ProgressHeartbeatToken'] = $token
+    $ctx.State['LastProgressAt'] = Get-Date
+    $startedAt = Get-Date
+
+    $timer = New-Object System.Windows.Threading.DispatcherTimer
+    $timer.Interval = [TimeSpan]::FromMilliseconds($IntervalMs)
+    $timer.Add_Tick({
+        if (-not $ctx.State.IsBusy -or $ctx.State.ProgressHeartbeatToken -ne $token) {
+            $timer.Stop()
+            return
+        }
+
+        $last = $ctx.State.LastProgressAt
+        if ($last) {
+            try {
+                if (((Get-Date) - [DateTime]$last).TotalSeconds -lt 2) { return }
+            } catch {}
+        }
+
+        $progress = Get-CIODIYGuiControl -Name 'Progress'
+        $txtProgress = Get-CIODIYGuiControl -Name 'TxtProgress'
+        $txtPercent = Get-CIODIYGuiControl -Name 'TxtProgressPercent'
+        $txtSubtitle = Get-CIODIYGuiControl -Name 'TxtSubtitle'
+
+        $elapsed = [int]((Get-Date) - $startedAt).TotalSeconds
+        $phase = switch ([int](($elapsed / 8) % 4)) {
+            0 { '正在枚举硬件设备' }
+            1 { '正在读取驱动属性' }
+            2 { '正在分析驱动状态' }
+            default { '正在匹配驱动包' }
+        }
+        $text = ('{0}，已用 {1} 秒...' -f $phase, $elapsed)
+
+        if ($progress) {
+            if ($progress.IsIndeterminate) { $progress.IsIndeterminate = $false }
+            $current = [double]$progress.Value
+            $next = [Math]::Min($MaxValue, [Math]::Max($current + 1, 5 + ($elapsed * 0.6)))
+            if ($next -gt $current) {
+                $progress.Value = $next
+                if ($txtPercent) { $txtPercent.Text = ('{0}%' -f [int]$next) }
+            }
+        }
+        if ($txtProgress) { $txtProgress.Text = $text }
+        if ($txtSubtitle) { $txtSubtitle.Text = $BaseText }
+    }.GetNewClosure())
+    $timer.Start()
+}
+
 function Initialize-CIODIYGuiLogCallback {
     $ctx = Get-CIODIYGuiContext
     $window = $ctx.Window
@@ -168,6 +228,7 @@ function Initialize-CIODIYGuiLogCallback {
         param($msg)
         $msgStr = [string]$msg
         Write-CIODIYGuiLog -Message $msgStr
+        $ctx.State['LastProgressAt'] = Get-Date
         if ($ctx.State.IsBusy -and $progress) {
             # Capture current values so the async BeginInvoke action sees the right snapshot.
             # Without GetNewClosure(), [System.Action]{} resolves variables on the UI thread
@@ -245,6 +306,11 @@ function Set-CIODIYGuiBusyState {
     param([bool]$Busy, [string]$ProgressText = '')
     $ctx = Get-CIODIYGuiContext
     $ctx.State.IsBusy = $Busy
+    if ($Busy) {
+        $ctx.State['LastProgressAt'] = Get-Date
+    } else {
+        $ctx.State['ProgressHeartbeatToken'] = $null
+    }
 
     $toggleNames = @(
         'BtnScan','BtnFixAll','BtnFixRecommended','BtnQuickFix','BtnSync','BtnInstallLocal',
@@ -396,17 +462,22 @@ function Start-CIODIYGuiWorker {
         [Parameter(Mandatory)][scriptblock]$DoWork,
         [scriptblock]$OnComplete,
         [scriptblock]$OnError,
+        [int]$TimeoutSeconds = 0,
         [switch]$Force   # Skip IsBusy check (for internal use only)
     )
 
     $ctx = Get-CIODIYGuiContext
 
-    # Prevent concurrent workers — a second worker on the same shared runspace would
-    # corrupt session state and cause unpredictable failures.
-    if (-not $Force -and $ctx.State['IsBusy']) {
+    if (-not $ctx.State.ContainsKey('WorkerActive')) { $ctx.State['WorkerActive'] = $false }
+
+    # Prevent concurrent workers. IsBusy is a UI state; WorkerActive is the real
+    # background-runspace lock.
+    if (-not $Force -and [bool]$ctx.State['WorkerActive']) {
         Write-CIODIYGuiLog 'Worker busy — ignoring duplicate start request'
-        return
+        return $false
     }
+    $ctx.State['WorkerActive'] = $true
+    $ctx.State['WorkerStarted'] = Get-Date
 
     $window = $ctx.Window
     $appRoot = if ($global:DriverBoosterAppRoot) {
@@ -434,7 +505,19 @@ function Start-CIODIYGuiWorker {
 
     # Acquire / open the long-lived runspace (engine already loaded).
     Write-CIODIYStartupLog -Message 'Worker: acquiring runspace' -AppRoot $appRoot
-    $rs = Get-CIODIYWorkerRunspace -AppRoot $appRoot
+    try {
+        $rs = Get-CIODIYWorkerRunspace -AppRoot $appRoot
+    } catch {
+        $ctx.State['WorkerActive'] = $false
+        $ctx.State['WorkerStarted'] = $null
+        $em = $_.Exception.Message
+        if ($OnError) { & $OnError $em }
+        else {
+            Write-CIODIYGuiLog -Message ("Worker runspace failed: {0}" -f $em)
+            Set-CIODIYGuiBusyState -Busy $false -ProgressText '就绪'
+        }
+        return $false
+    }
     Write-CIODIYStartupLog -Message 'Worker: runspace ready' -AppRoot $appRoot
 
     # Inject variables AND a worker-side $ctx with queue-based LogCallback.
@@ -477,13 +560,27 @@ function Start-CIODIYGuiWorker {
     })
 
     Write-CIODIYStartupLog -Message 'Worker: calling BeginInvoke' -AppRoot $appRoot
-    $async = $ps.BeginInvoke()
+    try {
+        $async = $ps.BeginInvoke()
+    } catch {
+        $ctx.State['WorkerActive'] = $false
+        $ctx.State['WorkerStarted'] = $null
+        try { $ps.Dispose() } catch {}
+        $em = $_.Exception.Message
+        if ($OnError) { & $OnError $em }
+        else {
+            Write-CIODIYGuiLog -Message ("Worker start failed: {0}" -f $em)
+            Set-CIODIYGuiBusyState -Busy $false -ProgressText '就绪'
+        }
+        return $false
+    }
     Write-CIODIYStartupLog -Message 'Worker: BeginInvoke returned, starting drain timer' -AppRoot $appRoot
 
     # Drain queue + check completion via DispatcherTimer on UI thread.
     $timer = New-Object System.Windows.Threading.DispatcherTimer
     $timer.Interval = [TimeSpan]::FromMilliseconds(120)
     $finished = [ref]$false
+    $startedAt = Get-Date
 
     $tickHandler = {
         # Drain log queue
@@ -495,6 +592,20 @@ function Start-CIODIYGuiWorker {
                 else { Write-CIODIYGuiLog -Message $msg }
             } catch {}
             $count++
+        }
+
+        if ($TimeoutSeconds -gt 0 -and -not $finished.Value -and ((Get-Date) - $startedAt).TotalSeconds -gt $TimeoutSeconds) {
+            $finished.Value = $true
+            $timer.Stop()
+            try { $ps.Stop() } catch {}
+            try { $ps.Dispose() } catch {}
+            $ctx.State['WorkerActive'] = $false
+            $ctx.State['WorkerStarted'] = $null
+            $timeoutMessage = "后台任务超时（超过 $TimeoutSeconds 秒），已停止。"
+            Write-CIODIYGuiLog -Message $timeoutMessage
+            if ($OnError) { & $OnError $timeoutMessage }
+            else { Set-CIODIYGuiBusyState -Busy $false -ProgressText '就绪' }
+            return
         }
 
         if ($async.IsCompleted -and -not $finished.Value) {
@@ -562,6 +673,8 @@ function Start-CIODIYGuiWorker {
                 }
             } finally {
                 try { $ps.Dispose() } catch {}
+                $ctx.State['WorkerActive'] = $false
+                $ctx.State['WorkerStarted'] = $null
                 # Do NOT close the shared runspace here: it is reused.
             }
         }
@@ -569,6 +682,7 @@ function Start-CIODIYGuiWorker {
 
     $timer.Add_Tick($tickHandler)
     $timer.Start()
+    return $true
 }
 
 function Import-CIODIYGuiModules {

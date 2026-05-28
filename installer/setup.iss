@@ -1,7 +1,7 @@
 ﻿#define MyAppName "Yanbai驱动"
 #define MyAppNameEn "Yanbai Driver"
 #define MyAppDir "Yanbai_Driver"
-#define MyAppVersion "2.2.2"
+#define MyAppVersion "2.2.3"
 #define OutputSuffix "_Online"
 #define MyAppPublisher "Yanbai"
 #define MyAppLauncher "{sys}\wscript.exe"
