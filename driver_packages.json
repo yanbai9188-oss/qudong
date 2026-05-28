@@ -1,6 +1,6 @@
 {
     "schema_version":  3,
-    "version":  "1.7.0",
+    "version":  "1.8.0",
     "updated":  "2026-05-28",
     "description":  "Yanbai Driver manifest v1.7 - full 31-package coverage",
     "repository":  "https://github.com/yanbai9188-oss/qudong",
@@ -215,11 +215,23 @@
                                                     ],
                                              "deviceClass":  "network_wifi"
                                          },
-                     "Seed_Intel_WiFi_7260":  {
-                                                  "id":  "intel_wifi_7260",
-                                                  "url":  "https://github.com/yanbai9188-oss/qudong/releases/download/v1.1.0/intel_wifi_7260.zip",
-                                                  "version":  "16.10.0.5",
-                                                  "sha256":  "1e678f10a35bd3b75492d385884d4cda956df983631a7223104b85493fce4c14",
+                    "Seed_Intel_WiFi_7260":  {
+                                                 "id":  "intel_wifi_7260",
+                                                 "url":  "https://github.com/yanbai9188-oss/qudong/releases/download/v1.1.0/intel_wifi_7260.zip",
+                                                 "version":  "16.10.0.5",
+                                                 "sha256":  "4cb4913b3fe41ab8a35e7753561f960d6178a798b35a0f3c4f25e0247e2fe090",
+                                                 "sources":  [
+                                                                 {
+                                                                     "type":  "catalog",
+                                                                     "query":  "Intel Wireless-AC 7260",
+                                                                     "hwids":  ["PCI\\VEN_8086&DEV_08B1", "PCI\\VEN_8086&DEV_08B2"]
+                                                                 },
+                                                                 {
+                                                                     "type":  "github",
+                                                                     "url":  "https://github.com/yanbai9188-oss/qudong/releases/download/v1.1.0/intel_wifi_7260.zip",
+                                                                     "sha256":  "4cb4913b3fe41ab8a35e7753561f960d6178a798b35a0f3c4f25e0247e2fe090"
+                                                                 }
+                                                             ],
                                                   "category":  "wifi",
                                                   "vendor":  "Intel",
                                                   "score":  91,
