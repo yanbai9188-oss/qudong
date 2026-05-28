@@ -1,0 +1,25 @@
+﻿{
+    "HealthScore":  62,
+    "ScoreLabel":  "一般",
+    "ScoreColor":  "#FB923C",
+    "Warnings":  [
+                     "发现 6 个问题设备"
+                 ],
+    "Recommendations":  [
+                            "建议立即扫描并修复推荐驱动",
+                            "本地驱动库缺失：Intel 无线网卡 (AX/AC 9560+)",
+                            "本地驱动库缺失：Intel 核显 UHD/Iris Xe (6th-13th Gen Win10/11)",
+                            "本地驱动库缺失：Realtek 千兆网卡",
+                            "本地驱动库缺失：Realtek HD 高清晰音频 (ALC 全系列)"
+                        ],
+    "WarningCount":  1,
+    "RecommendationCount":  5,
+    "ProblemCount":  6,
+    "OutdatedCount":  0,
+    "Completeness":  0,
+    "DeviceTotal":  6,
+    "RecommendedFix":  0,
+    "AnalyzedAt":  "2026-05-27T14:10:28.6451679-04:00",
+    "SummaryLine":  "健康度 62% · 发现问题：6  推荐修复：0  可选：2  不建议：4",
+    "IsQuickEstimate":  false
+}

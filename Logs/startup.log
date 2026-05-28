@@ -1,0 +1,202 @@
+﻿[2026-05-25T13:17:42.6387137-04:00] Loading engine
+[2026-05-25T13:17:42.9767481-04:00] Engine loaded
+[2026-05-25T13:17:43.0292461-04:00] Instance lock PID=19380
+[2026-05-25T13:17:43.0414829-04:00] Instance lock PID=19380
+[2026-05-25T13:35:30.0553431-04:00] Loading engine
+[2026-05-25T13:35:30.4026529-04:00] Loading engine
+[2026-05-25T13:35:30.4101470-04:00] Engine loaded
+[2026-05-25T13:35:30.8122723-04:00] Engine loaded
+[2026-05-25T13:35:30.8681475-04:00] Instance lock PID=16796
+[2026-05-25T13:35:30.8816068-04:00] Instance lock PID=16796
+[2026-05-25T13:35:55.8772203-04:00] Loading engine
+[2026-05-25T13:35:56.1578918-04:00] Engine loaded
+[2026-05-25T13:36:07.4650741-04:00] Engine files validated
+[2026-05-25T13:36:08.1163856-04:00] Engine files validated
+[2026-05-25T13:36:08.3861483-04:00] Instance lock PID=17836
+[2026-05-25T13:36:08.4020227-04:00] Instance lock PID=17836
+[2026-05-25T13:36:16.5264239-04:00] Engine files validated
+[2026-05-25T13:36:16.5333288-04:00] Loading engine
+[2026-05-25T13:36:16.7864822-04:00] Engine loaded
+[2026-05-25T13:36:16.8014788-04:00] Show-DriverBoosterGui begin
+[2026-05-25T13:36:16.8449879-04:00] Instance lock PID=17504
+[2026-05-25T13:36:32.0887016-04:00] Engine files validated
+[2026-05-25T13:36:32.4610493-04:00] Instance lock PID=14488
+[2026-05-25T13:36:32.4700410-04:00] Instance lock PID=14488
+[2026-05-25T13:36:32.7895433-04:00] Engine files validated
+[2026-05-25T14:22:05.1319223-04:00] Engine files validated
+[2026-05-25T14:22:05.4658822-04:00] Instance lock PID=7984
+[2026-05-25T14:22:06.3066499-04:00] Engine files validated
+[2026-05-25T14:22:06.3066499-04:00] Loading engine
+[2026-05-25T14:22:06.5571027-04:00] Engine loaded
+[2026-05-25T14:22:06.5737460-04:00] Show-DriverBoosterGui begin
+[2026-05-25T14:22:06.6408533-04:00] Blocked duplicate instance PID=7984
+[2026-05-25T14:23:05.6433046-04:00] Engine files validated
+[2026-05-25T14:23:05.6609462-04:00] Loading engine
+[2026-05-25T14:23:05.9274612-04:00] Engine loaded
+[2026-05-25T14:23:05.9431916-04:00] Show-DriverBoosterGui begin
+[2026-05-25T14:23:05.9783445-04:00] Instance lock PID=24032
+[2026-05-25T14:24:11.5309809-04:00] Engine files validated
+[2026-05-25T14:24:12.0002955-04:00] Instance lock PID=19212
+[2026-05-25T14:24:12.0993052-04:00] Instance lock PID=19212
+[2026-05-25T14:24:12.4843568-04:00] Engine files validated
+[2026-05-25T14:28:40.9353262-04:00] Engine files validated
+[2026-05-25T14:28:41.5875548-04:00] Instance lock PID=17132
+[2026-05-25T14:28:41.6750649-04:00] Instance lock PID=17132
+[2026-05-25T14:28:41.6824528-04:00] test-stability write check
+[2026-05-25T14:28:42.0331926-04:00] Engine files validated
+[2026-05-25T14:30:33.1620525-04:00] Engine files validated
+[2026-05-25T14:30:33.7278654-04:00] Instance lock PID=9896
+[2026-05-25T14:30:33.8333593-04:00] Instance lock PID=9896
+[2026-05-25T14:30:33.8421970-04:00] test-stability write check
+[2026-05-25T14:30:34.2076963-04:00] Engine files validated
+[2026-05-25T14:30:35.6094147-04:00] Engine files validated
+[2026-05-25T14:30:36.8721091-04:00] Engine files validated
+[2026-05-25T14:30:37.5054250-04:00] Engine files validated
+[2026-05-25T14:33:10.7445401-04:00] pre-install-check readonly test
+[2026-05-25T14:33:10.9378865-04:00] Instance lock PID=11964
+[2026-05-25T14:33:11.3241640-04:00] Engine files validated
+[2026-05-25T14:33:11.8118740-04:00] Instance lock PID=15972
+[2026-05-25T14:33:11.8751849-04:00] Instance lock PID=15972
+[2026-05-25T14:33:11.8910206-04:00] test-stability write check
+[2026-05-25T14:33:12.2439583-04:00] Engine files validated
+[2026-05-25T14:33:51.1516066-04:00] Instance lock PID=7132
+[2026-05-25T14:33:51.5666435-04:00] Engine files validated
+[2026-05-25T14:33:52.0154237-04:00] Instance lock PID=13176
+[2026-05-25T14:33:52.0998333-04:00] Instance lock PID=13176
+[2026-05-25T14:33:52.0998333-04:00] test-stability write check
+[2026-05-25T14:33:52.4493057-04:00] Engine files validated
+[2026-05-25T14:47:27.0874618-04:00] Engine files validated
+[2026-05-25T14:47:27.3397572-04:00] Instance lock PID=2856
+[2026-05-25T14:47:27.4183747-04:00] Instance lock PID=2856
+[2026-05-25T14:47:27.4392583-04:00] test-stability write check
+[2026-05-25T14:47:27.7684717-04:00] Engine files validated
+[2026-05-25T14:47:28.6332792-04:00] Instance lock PID=15708
+[2026-05-25T14:47:28.9876659-04:00] Engine files validated
+[2026-05-25T14:47:29.2243943-04:00] Instance lock PID=22788
+[2026-05-25T14:47:29.3051177-04:00] Instance lock PID=22788
+[2026-05-25T14:47:29.3137418-04:00] test-stability write check
+[2026-05-25T14:47:29.6432228-04:00] Engine files validated
+[2026-05-25T14:49:45.0206548-04:00] Engine files validated
+[2026-05-25T14:49:45.4970588-04:00] Instance lock PID=7508
+[2026-05-25T14:49:45.5864980-04:00] Instance lock PID=7508
+[2026-05-25T14:49:45.5946701-04:00] test-stability write check
+[2026-05-25T14:49:45.9123567-04:00] Engine files validated
+[2026-05-25T14:49:47.6799584-04:00] Instance lock PID=14672
+[2026-05-25T14:49:48.0348219-04:00] Engine files validated
+[2026-05-25T14:49:48.4574371-04:00] Instance lock PID=16036
+[2026-05-25T14:49:48.5306196-04:00] Instance lock PID=16036
+[2026-05-25T14:49:48.5462542-04:00] test-stability write check
+[2026-05-25T14:49:48.8487069-04:00] Engine files validated
+[2026-05-25T14:55:05.5476133-04:00] Engine files validated
+[2026-05-25T14:55:05.8060299-04:00] Instance lock PID=2764
+[2026-05-25T14:55:05.9005532-04:00] Instance lock PID=2764
+[2026-05-25T14:55:05.9131427-04:00] test-stability write check
+[2026-05-25T14:55:06.2623626-04:00] Engine files validated
+[2026-05-25T14:55:07.0850675-04:00] Instance lock PID=12900
+[2026-05-25T14:55:07.4266843-04:00] Engine files validated
+[2026-05-25T14:55:07.6461594-04:00] Instance lock PID=19392
+[2026-05-25T14:55:07.7452757-04:00] Instance lock PID=19392
+[2026-05-25T14:55:07.7452757-04:00] test-stability write check
+[2026-05-25T14:55:08.1287657-04:00] Engine files validated
+[2026-05-25T14:55:21.1182501-04:00] Engine files validated
+[2026-05-25T14:55:21.3474868-04:00] Instance lock PID=10908
+[2026-05-25T14:55:21.4293136-04:00] Instance lock PID=10908
+[2026-05-25T14:55:21.4428863-04:00] test-stability write check
+[2026-05-25T14:55:21.7631058-04:00] Engine files validated
+[2026-05-25T14:55:22.6341906-04:00] Instance lock PID=16768
+[2026-05-25T14:55:22.9832511-04:00] Engine files validated
+[2026-05-25T14:55:23.2180583-04:00] Instance lock PID=15992
+[2026-05-25T14:55:23.2951095-04:00] Instance lock PID=15992
+[2026-05-25T14:55:23.2958032-04:00] test-stability write check
+[2026-05-25T14:55:23.6287197-04:00] Engine files validated
+[2026-05-25T14:55:49.0590435-04:00] Engine files validated
+[2026-05-25T14:55:49.3435613-04:00] Instance lock PID=9616
+[2026-05-25T14:55:49.4300311-04:00] Instance lock PID=9616
+[2026-05-25T14:55:49.4456160-04:00] test-stability write check
+[2026-05-25T14:55:49.7812256-04:00] Engine files validated
+[2026-05-25T14:55:50.6807523-04:00] Instance lock PID=18484
+[2026-05-25T14:55:51.0269908-04:00] Engine files validated
+[2026-05-25T14:55:51.3098895-04:00] Instance lock PID=9984
+[2026-05-25T14:55:51.3782020-04:00] Instance lock PID=9984
+[2026-05-25T14:55:51.3942008-04:00] test-stability write check
+[2026-05-25T14:55:51.7280127-04:00] Engine files validated
+[2026-05-25T14:58:01.0651153-04:00] Engine files validated
+[2026-05-25T14:58:01.5633790-04:00] Instance lock PID=15936
+[2026-05-25T14:58:01.6573667-04:00] Instance lock PID=15936
+[2026-05-25T14:58:01.6699323-04:00] test-stability write check
+[2026-05-25T14:58:02.0065836-04:00] Engine files validated
+[2026-05-25T14:58:03.5306313-04:00] Instance lock PID=22960
+[2026-05-25T14:58:03.8627810-04:00] Engine files validated
+[2026-05-25T14:58:04.3340090-04:00] Instance lock PID=13144
+[2026-05-25T14:58:04.4319304-04:00] Instance lock PID=13144
+[2026-05-25T14:58:04.4334233-04:00] test-stability write check
+[2026-05-25T14:58:04.7661636-04:00] Engine files validated
+[2026-05-25T14:58:25.2509837-04:00] Engine files validated
+[2026-05-25T14:58:26.5312122-04:00] Engine files validated
+[2026-05-25T14:58:27.0010094-04:00] Instance lock PID=23944
+[2026-05-25T14:58:27.1002973-04:00] Instance lock PID=23944
+[2026-05-25T14:58:27.1002973-04:00] test-stability write check
+[2026-05-25T14:58:27.4438465-04:00] Engine files validated
+[2026-05-25T15:04:46.8092975-04:00] Engine files validated
+[2026-05-25T15:04:47.4054452-04:00] Instance lock PID=6504
+[2026-05-25T15:04:47.5160911-04:00] Instance lock PID=6504
+[2026-05-25T15:04:47.5291392-04:00] test-stability write check
+[2026-05-25T15:04:47.9516679-04:00] Engine files validated
+[2026-05-25T15:04:50.3598218-04:00] Instance lock PID=18052
+[2026-05-25T15:04:50.7535682-04:00] Engine files validated
+[2026-05-25T15:04:51.3541668-04:00] Instance lock PID=24240
+[2026-05-25T15:04:51.4748314-04:00] Instance lock PID=24240
+[2026-05-25T15:04:51.4864161-04:00] test-stability write check
+[2026-05-25T15:04:51.9055993-04:00] Engine files validated
+[2026-05-25T15:05:20.7385189-04:00] Instance lock PID=3352
+[2026-05-25T15:05:21.0735959-04:00] Engine files validated
+[2026-05-25T15:05:21.6729132-04:00] Instance lock PID=9656
+[2026-05-25T15:05:21.7548041-04:00] Instance lock PID=9656
+[2026-05-25T15:05:21.7792238-04:00] test-stability write check
+[2026-05-25T15:05:22.1376608-04:00] Engine files validated
+[2026-05-26T14:01:20.6068482-04:00] Engine files validated
+[2026-05-26T14:17:28.2030303-04:00] Engine files validated
+[2026-05-27T14:09:14.8336651-04:00] Engine files validated
+[2026-05-27T14:09:17.1138125-04:00] Worker: Start-CIODIYGuiWorker entered
+[2026-05-27T14:09:17.1417923-04:00] Worker: captured 2 closure vars
+[2026-05-27T14:09:17.1447931-04:00] Worker: acquiring runspace
+[2026-05-27T14:09:17.4985237-04:00] Worker: runspace ready
+[2026-05-27T14:09:17.5101696-04:00] Worker: calling BeginInvoke
+[2026-05-27T14:09:17.5121662-04:00] Worker: BeginInvoke returned, starting drain timer
+[2026-05-27T14:09:18.1991282-04:00] Worker: async completed, calling EndInvoke
+[2026-05-27T14:09:35.5819130-04:00] Engine files validated
+[2026-05-27T14:09:41.5831977-04:00] Worker: Start-CIODIYGuiWorker entered
+[2026-05-27T14:09:41.6111998-04:00] Worker: captured 2 closure vars
+[2026-05-27T14:09:41.6139644-04:00] Worker: acquiring runspace
+[2026-05-27T14:09:41.9707027-04:00] Worker: runspace ready
+[2026-05-27T14:09:41.9816933-04:00] Worker: calling BeginInvoke
+[2026-05-27T14:09:41.9847013-04:00] Worker: BeginInvoke returned, starting drain timer
+[2026-05-27T14:09:45.3091929-04:00] Worker: async completed, calling EndInvoke
+[2026-05-27T14:09:45.3122639-04:00] Worker: EndInvoke returned 1 items, HadErrors=False
+[2026-05-27T14:10:16.3471235-04:00] Engine files validated
+[2026-05-27T14:10:23.8740183-04:00] Worker: Start-CIODIYGuiWorker entered
+[2026-05-27T14:10:23.9130039-04:00] Worker: captured 2 closure vars
+[2026-05-27T14:10:23.9190054-04:00] Worker: acquiring runspace
+[2026-05-27T14:10:24.3917546-04:00] Worker: runspace ready
+[2026-05-27T14:10:24.4092694-04:00] Worker: calling BeginInvoke
+[2026-05-27T14:10:24.4122690-04:00] Worker: BeginInvoke returned, starting drain timer
+[2026-05-27T14:10:28.2287264-04:00] Worker: async completed, calling EndInvoke
+[2026-05-27T14:10:28.2388838-04:00] Worker: EndInvoke returned 1 items, HadErrors=False
+[2026-05-27T14:17:15.3680563-04:00] Engine files validated
+[2026-05-27T14:18:28.7533913-04:00] Instance lock PID=23228
+[2026-05-27T14:18:29.2781164-04:00] Engine files validated
+[2026-05-27T14:18:29.8726664-04:00] Instance lock PID=26232
+[2026-05-27T14:18:29.8889469-04:00] Instance lock PID=26232
+[2026-05-27T14:18:29.9031326-04:00] test-stability write check
+[2026-05-27T14:18:30.2848832-04:00] Engine files validated
+[2026-05-27T14:22:57.0642723-04:00] Engine files validated
+[2026-05-27T14:23:50.9320050-04:00] Engine files validated
+[2026-05-28T10:07:56.3650583-04:00] Engine files validated
+[2026-05-28T10:15:14.7283925-04:00] Engine files validated
+[2026-05-28T11:15:57.4810445-04:00] Engine files validated
+[2026-05-28T11:22:31.3182583-04:00] Instance lock PID=18564
+[2026-05-28T11:22:31.9065666-04:00] Engine files validated
+[2026-05-28T11:22:32.3537162-04:00] Instance lock PID=30236
+[2026-05-28T11:22:32.4091921-04:00] Instance lock PID=30236
+[2026-05-28T11:22:32.4202715-04:00] test-stability write check
+[2026-05-28T11:22:32.9439092-04:00] Engine files validated

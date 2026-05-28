@@ -1,0 +1,8 @@
+﻿{
+    "manifest_url":  "https://raw.githubusercontent.com/yanbai9188-oss/qudong/main/manifest.json",
+    "fallback_manifest_url":  "https://raw.githubusercontent.com/yanbai9188-oss/qudong/main/driver_packages.json",
+    "description":  "CIODIY driver mirror. Sync rules from GitHub; driver binaries in Releases or local Drivers\\.",
+    "repository":  "https://github.com/yanbai9188-oss/qudong",
+    "release_base":  "https://github.com/yanbai9188-oss/qudong/releases/download/v1.1.0",
+    "fallback_release_base":  "https://github.com/yanbai5201-netizen/driver-mirror/releases/download/v2026.06.05"
+}

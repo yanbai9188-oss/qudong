@@ -1,0 +1,1368 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+
+        Title="Yanbai驱动" Height="820" Width="1180"
+
+        MinHeight="720" MinWidth="1020"
+
+        WindowStartupLocation="CenterScreen" Background="#0F1218"
+
+        UseLayoutRounding="True" SnapsToDevicePixels="True"
+
+        TextOptions.TextFormattingMode="Display" TextOptions.TextRenderingMode="ClearType">
+
+
+
+  <Window.Resources>
+
+    <SolidColorBrush x:Key="BgDark" Color="#0F1218"/>
+
+    <SolidColorBrush x:Key="BgPanel" Color="#171B24"/>
+
+    <SolidColorBrush x:Key="BgCard" Color="#1E2430"/>
+
+    <SolidColorBrush x:Key="AccentOrange" Color="#FF6B00"/>
+
+    <SolidColorBrush x:Key="AccentOrangeLight" Color="#FF8533"/>
+
+    <SolidColorBrush x:Key="AccentGreen" Color="#22C55E"/>
+
+    <SolidColorBrush x:Key="AccentBlue" Color="#3B82F6"/>
+
+    <SolidColorBrush x:Key="TextPrimary" Color="#F1F5F9"/>
+
+    <SolidColorBrush x:Key="TextSecondary" Color="#94A3B8"/>
+
+    <SolidColorBrush x:Key="BorderDark" Color="#2A3140"/>
+
+
+
+    <Style x:Key="SidebarBtn" TargetType="Button">
+
+      <Setter Property="MinHeight" Value="42"/>
+
+      <Setter Property="Padding" Value="16,10"/>
+
+      <Setter Property="Margin" Value="0,0,0,4"/>
+
+      <Setter Property="Foreground" Value="#CBD5E1"/>
+
+      <Setter Property="Background" Value="Transparent"/>
+
+      <Setter Property="BorderThickness" Value="0"/>
+
+      <Setter Property="HorizontalContentAlignment" Value="Left"/>
+
+      <Setter Property="VerticalContentAlignment" Value="Center"/>
+
+      <Setter Property="FontSize" Value="13"/>
+
+      <Setter Property="Cursor" Value="Hand"/>
+
+      <Setter Property="Template">
+
+        <Setter.Value>
+
+          <ControlTemplate TargetType="Button">
+
+            <Grid SnapsToDevicePixels="True">
+
+              <Border x:Name="bd" Background="{TemplateBinding Background}" CornerRadius="8"/>
+
+              <Border x:Name="indicator" Width="3" HorizontalAlignment="Left" Background="#FF6B00"
+
+                      CornerRadius="2" Margin="2,8,0,8" Visibility="Collapsed"/>
+
+              <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+
+                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+
+                              Margin="{TemplateBinding Padding}" RecognizesAccessKey="True"/>
+
+            </Grid>
+
+            <ControlTemplate.Triggers>
+
+              <Trigger Property="IsMouseOver" Value="True">
+
+                <Setter TargetName="bd" Property="Background" Value="#252B38"/>
+
+                <Setter Property="Foreground" Value="#F1F5F9"/>
+
+              </Trigger>
+
+              <Trigger Property="Tag" Value="Active">
+
+                <Setter TargetName="bd" Property="Background" Value="#2A1F14"/>
+
+                <Setter TargetName="indicator" Property="Visibility" Value="Visible"/>
+
+                <Setter Property="Foreground" Value="#FF8533"/>
+
+                <Setter Property="FontWeight" Value="SemiBold"/>
+
+              </Trigger>
+
+              <Trigger Property="IsEnabled" Value="False">
+
+                <Setter Property="Opacity" Value="0.45"/>
+
+              </Trigger>
+
+            </ControlTemplate.Triggers>
+
+          </ControlTemplate>
+
+        </Setter.Value>
+
+      </Setter>
+
+    </Style>
+
+
+
+    <Style x:Key="PrimaryBtn" TargetType="Button">
+
+      <Setter Property="MinHeight" Value="48"/>
+
+      <Setter Property="MinWidth" Value="140"/>
+
+      <Setter Property="Padding" Value="24,12"/>
+
+      <Setter Property="Foreground" Value="White"/>
+
+      <Setter Property="FontSize" Value="14"/>
+
+      <Setter Property="FontWeight" Value="SemiBold"/>
+
+      <Setter Property="BorderThickness" Value="0"/>
+
+      <Setter Property="Cursor" Value="Hand"/>
+
+      <Setter Property="Effect">
+
+        <Setter.Value>
+
+          <DropShadowEffect Color="#FF6B00" BlurRadius="14" ShadowDepth="0" Opacity="0.35"/>
+
+        </Setter.Value>
+
+      </Setter>
+
+      <Setter Property="Template">
+
+        <Setter.Value>
+
+          <ControlTemplate TargetType="Button">
+
+            <Border x:Name="bd" CornerRadius="24" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+
+              <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{TemplateBinding Padding}"/>
+
+            </Border>
+
+            <ControlTemplate.Triggers>
+
+              <Trigger Property="IsMouseOver" Value="True">
+
+                <Setter TargetName="bd" Property="Background" Value="{StaticResource AccentOrangeLight}"/>
+
+              </Trigger>
+
+              <Trigger Property="IsPressed" Value="True">
+
+                <Setter TargetName="bd" Property="Background" Value="#E55F00"/>
+
+              </Trigger>
+
+              <Trigger Property="IsEnabled" Value="False">
+
+                <Setter Property="Opacity" Value="0.5"/>
+
+              </Trigger>
+
+            </ControlTemplate.Triggers>
+
+          </ControlTemplate>
+
+        </Setter.Value>
+
+      </Setter>
+
+    </Style>
+
+
+
+    <Style x:Key="GreenBtn" TargetType="Button" BasedOn="{StaticResource PrimaryBtn}">
+
+      <Setter Property="Background" Value="#16A34A"/>
+
+      <Setter Property="Effect">
+
+        <Setter.Value>
+
+          <DropShadowEffect Color="#16A34A" BlurRadius="14" ShadowDepth="0" Opacity="0.35"/>
+
+        </Setter.Value>
+
+      </Setter>
+
+    </Style>
+
+
+
+    <Style x:Key="GhostBtn" TargetType="Button" BasedOn="{StaticResource PrimaryBtn}">
+
+      <Setter Property="Background" Value="#2A3140"/>
+
+      <Setter Property="MinHeight" Value="36"/>
+
+      <Setter Property="Padding" Value="14,8"/>
+
+      <Setter Property="FontSize" Value="12"/>
+
+    </Style>
+
+
+
+    <!-- Clickable stat-card button — content (named TextBlocks) lives in logical tree,
+         so window.FindName() can locate them normally. -->
+    <Style x:Key="CardBtn" TargetType="Button">
+      <Setter Property="Background"            Value="#232936"/>
+      <Setter Property="BorderBrush"           Value="#2A3140"/>
+      <Setter Property="BorderThickness"       Value="1"/>
+      <Setter Property="Padding"               Value="14,12"/>
+      <Setter Property="Cursor"                Value="Hand"/>
+      <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+      <Setter Property="VerticalContentAlignment"   Value="Stretch"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border x:Name="bd" Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="10" Padding="{TemplateBinding Padding}">
+              <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="bd" Property="Background"   Value="#2A3347"/>
+                <Setter TargetName="bd" Property="BorderBrush"  Value="#3D4F6A"/>
+              </Trigger>
+              <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="bd" Property="Background"   Value="#1E293B"/>
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+
+    <Style TargetType="CheckBox">
+
+      <Setter Property="Foreground" Value="{StaticResource TextSecondary}"/>
+
+      <Setter Property="FontSize" Value="12"/>
+
+      <Setter Property="Margin" Value="0,0,0,10"/>
+
+      <Setter Property="Padding" Value="4,2,0,2"/>
+
+      <Setter Property="HorizontalAlignment" Value="Stretch"/>
+
+      <Setter Property="VerticalContentAlignment" Value="Center"/>
+
+    </Style>
+
+
+
+    <Style TargetType="DataGrid">
+
+      <Setter Property="Background" Value="{StaticResource BgCard}"/>
+
+      <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+
+      <Setter Property="BorderBrush" Value="{StaticResource BorderDark}"/>
+
+      <Setter Property="BorderThickness" Value="1"/>
+
+      <Setter Property="RowBackground" Value="#1E2430"/>
+
+      <Setter Property="AlternatingRowBackground" Value="#232936"/>
+
+      <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+
+      <Setter Property="HorizontalGridLinesBrush" Value="#2A3140"/>
+
+      <Setter Property="HeadersVisibility" Value="Column"/>
+
+      <Setter Property="FontSize" Value="12"/>
+
+      <Setter Property="RowHeight" Value="40"/>
+
+    </Style>
+
+    <Style TargetType="DataGridColumnHeader">
+
+      <Setter Property="Background" Value="#252B38"/>
+
+      <Setter Property="Foreground" Value="#CBD5E1"/>
+
+      <Setter Property="Padding" Value="10,10"/>
+
+      <Setter Property="BorderBrush" Value="#2A3140"/>
+
+      <Setter Property="BorderThickness" Value="0,0,0,1"/>
+
+      <Setter Property="FontWeight" Value="SemiBold"/>
+
+      <Setter Property="Height" Value="36"/>
+
+    </Style>
+
+    <Style TargetType="DataGridCell">
+
+      <Setter Property="BorderThickness" Value="0"/>
+
+      <Setter Property="Padding" Value="8,8"/>
+
+      <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+
+    </Style>
+
+  </Window.Resources>
+
+
+
+  <Grid>
+
+    <Grid.RowDefinitions>
+
+      <RowDefinition Height="Auto"/>
+
+      <RowDefinition Height="*"/>
+
+      <RowDefinition Height="Auto"/>
+
+    </Grid.RowDefinitions>
+
+
+
+    <!-- Header -->
+
+    <Border Grid.Row="0" BorderBrush="#FF6B00" BorderThickness="0,0,0,2" Padding="22,14">
+
+      <Border.Background>
+
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+
+          <GradientStop Color="#1A1F2C" Offset="0"/>
+
+          <GradientStop Color="#171B24" Offset="0.5"/>
+
+          <GradientStop Color="#1A1F2C" Offset="1"/>
+
+        </LinearGradientBrush>
+
+      </Border.Background>
+
+      <Grid>
+
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+
+          <Border Width="36" Height="36" CornerRadius="8" Margin="0,0,12,0">
+
+            <Border.Background>
+
+              <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+
+                <GradientStop Color="#FF8533" Offset="0"/>
+
+                <GradientStop Color="#FF6B00" Offset="1"/>
+
+              </LinearGradientBrush>
+
+            </Border.Background>
+
+            <TextBlock Text="Y" FontSize="22" FontWeight="Bold" Foreground="White"
+
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+          </Border>
+
+          <StackPanel VerticalAlignment="Center">
+
+            <TextBlock Text="Yanbai驱动" FontSize="18" FontWeight="Bold" Foreground="{StaticResource TextPrimary}"/>
+
+            <TextBlock x:Name="TxtAppVersion" Text="砚白 · v1.8.7" FontSize="10" Foreground="#FF8533" Margin="0,2,0,0"/>
+
+          </StackPanel>
+
+        </StackPanel>
+
+        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
+
+          <Ellipse Width="8" Height="8" Fill="#22C55E" Margin="0,0,8,0" VerticalAlignment="Center"/>
+
+          <TextBlock x:Name="TxtSubtitle" VerticalAlignment="Center"
+
+                     Text="Win10/Win11 智能驱动检测 · 扫描后一键修复"
+
+                     FontSize="12" Foreground="{StaticResource TextSecondary}"/>
+
+        </StackPanel>
+
+      </Grid>
+
+    </Border>
+
+
+
+    <!-- Main: Nav + Pages -->
+
+    <Grid Grid.Row="1" Margin="16,10,16,8">
+
+      <Grid.ColumnDefinitions>
+
+        <ColumnDefinition Width="200" MinWidth="180"/>
+
+        <ColumnDefinition Width="*"/>
+
+      </Grid.ColumnDefinitions>
+
+
+
+      <!-- Left navigation (8 pages, frozen) -->
+
+      <Border Grid.Column="0" Background="{StaticResource BgPanel}" CornerRadius="10" Padding="10" Margin="0,0,12,0"
+
+              BorderBrush="{StaticResource BorderDark}" BorderThickness="1">
+
+        <StackPanel>
+
+          <Button x:Name="BtnNavDashboard" Style="{StaticResource SidebarBtn}">
+            <StackPanel Orientation="Horizontal">
+              <TextBlock Text="⊞" FontSize="14" Margin="0,0,9,0" VerticalAlignment="Center" Opacity="0.8"/>
+              <TextBlock Text="首页" VerticalAlignment="Center"/>
+            </StackPanel>
+          </Button>
+
+          <Button x:Name="BtnNavDrivers" Style="{StaticResource SidebarBtn}">
+            <StackPanel Orientation="Horizontal">
+              <TextBlock Text="⚙" FontSize="14" Margin="0,0,9,0" VerticalAlignment="Center" Opacity="0.8"/>
+              <TextBlock Text="驱动中心" VerticalAlignment="Center"/>
+            </StackPanel>
+          </Button>
+
+          <Button x:Name="BtnNavQuickFix" Style="{StaticResource SidebarBtn}">
+            <StackPanel Orientation="Horizontal">
+              <TextBlock Text="⚡" FontSize="13" Margin="0,0,9,0" VerticalAlignment="Center" Opacity="0.8"/>
+              <TextBlock Text="快速修复" VerticalAlignment="Center"/>
+            </StackPanel>
+          </Button>
+
+          <Button x:Name="BtnNavDeploy" Style="{StaticResource SidebarBtn}">
+            <StackPanel Orientation="Horizontal">
+              <TextBlock Text="▤" FontSize="14" Margin="0,0,9,0" VerticalAlignment="Center" Opacity="0.8"/>
+              <TextBlock Text="装机模式" VerticalAlignment="Center"/>
+            </StackPanel>
+          </Button>
+
+          <Button x:Name="BtnNavRepo" Style="{StaticResource SidebarBtn}">
+            <StackPanel Orientation="Horizontal">
+              <TextBlock Text="☁" FontSize="13" Margin="0,0,9,0" VerticalAlignment="Center" Opacity="0.8"/>
+              <TextBlock Text="驱动仓库" VerticalAlignment="Center"/>
+            </StackPanel>
+          </Button>
+
+          <Button x:Name="BtnNavRollback" Style="{StaticResource SidebarBtn}">
+            <StackPanel Orientation="Horizontal">
+              <TextBlock Text="↩" FontSize="14" Margin="0,0,9,0" VerticalAlignment="Center" Opacity="0.8"/>
+              <TextBlock Text="回滚中心" VerticalAlignment="Center"/>
+            </StackPanel>
+          </Button>
+
+          <Button x:Name="BtnNavLogs" Style="{StaticResource SidebarBtn}">
+            <StackPanel Orientation="Horizontal">
+              <TextBlock Text="≡" FontSize="15" Margin="0,0,9,0" VerticalAlignment="Center" Opacity="0.8"/>
+              <TextBlock Text="日志" VerticalAlignment="Center"/>
+            </StackPanel>
+          </Button>
+
+          <Button x:Name="BtnNavSettings" Style="{StaticResource SidebarBtn}">
+            <StackPanel Orientation="Horizontal">
+              <TextBlock Text="✦" FontSize="12" Margin="0,0,9,0" VerticalAlignment="Center" Opacity="0.8"/>
+              <TextBlock Text="设置" VerticalAlignment="Center"/>
+            </StackPanel>
+          </Button>
+
+        </StackPanel>
+
+      </Border>
+
+
+
+      <!-- Content pages -->
+
+      <Grid Grid.Column="1">
+
+
+
+        <!-- Dashboard -->
+
+        <Border x:Name="PageDashboard" Visibility="Visible" Background="{StaticResource BgPanel}" CornerRadius="10"
+
+                Padding="20" BorderBrush="{StaticResource BorderDark}" BorderThickness="1">
+
+          <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+            <StackPanel>
+
+              <TextBlock Text="当前设备" FontSize="16" FontWeight="SemiBold" Foreground="{StaticResource TextPrimary}" Margin="0,0,0,10"/>
+
+              <Border Background="#1E2430" CornerRadius="8" Padding="14,12" Margin="0,0,0,16" BorderBrush="#2A3140" BorderThickness="1">
+
+                <StackPanel>
+
+                  <TextBlock x:Name="TxtMachineTitle" Text="正在识别硬件..." FontSize="14" FontWeight="SemiBold" Foreground="#F1F5F9" TextWrapping="Wrap"/>
+
+                  <TextBlock x:Name="TxtMachinePlatform" Text="" FontSize="12" Foreground="#94A3B8" Margin="0,4,0,0" TextWrapping="Wrap"/>
+
+                  <TextBlock x:Name="TxtMachineSpecs" Text="" FontSize="11" Foreground="#64748B" Margin="0,4,0,0" TextWrapping="Wrap" LineHeight="16"/>
+
+                </StackPanel>
+
+              </Border>
+
+
+
+              <UniformGrid Rows="1" Columns="4" Margin="0,0,0,16">
+
+                <!-- 驱动健康 card -->
+                <Button x:Name="CardHealth" Style="{StaticResource CardBtn}" Margin="0,0,6,0">
+                  <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                      <Ellipse Width="7" Height="7" Fill="#22C55E" Margin="0,0,6,0" VerticalAlignment="Center"/>
+                      <TextBlock Text="驱动健康" Foreground="{StaticResource TextSecondary}" FontSize="11" VerticalAlignment="Center" FontWeight="Medium"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
+                      <TextBlock x:Name="TxtHealthScore" Text="--" Foreground="#22C55E" FontWeight="Bold" FontSize="28"/>
+                      <TextBlock x:Name="TxtHealthLabel" Text="" Foreground="#64748B" FontSize="11" VerticalAlignment="Bottom" Margin="6,0,0,5"/>
+                    </StackPanel>
+                  </StackPanel>
+                </Button>
+
+                <!-- 问题设备 card -->
+                <Button x:Name="CardIssues" Style="{StaticResource CardBtn}" Margin="6,0,6,0">
+                  <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                      <Ellipse Width="7" Height="7" Fill="#F87171" Margin="0,0,6,0" VerticalAlignment="Center"/>
+                      <TextBlock Text="问题设备" Foreground="{StaticResource TextSecondary}" FontSize="11" VerticalAlignment="Center" FontWeight="Medium"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                      <TextBlock x:Name="TxtIssueCountOverview" Text="-" Foreground="#F87171" FontWeight="Bold" FontSize="28"/>
+                      <TextBlock Text=" 项" Foreground="#64748B" FontSize="11" VerticalAlignment="Bottom" Margin="0,0,0,5"/>
+                    </StackPanel>
+                  </StackPanel>
+                </Button>
+
+                <!-- 推荐修复 card — orange highlight when active -->
+                <Button x:Name="CardRecommended" Style="{StaticResource CardBtn}" Margin="6,0,6,0">
+                  <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                      <Ellipse Width="7" Height="7" Fill="#FF6B00" Margin="0,0,6,0" VerticalAlignment="Center"/>
+                      <TextBlock Text="可一键修复" Foreground="{StaticResource TextSecondary}" FontSize="11" VerticalAlignment="Center" FontWeight="Medium"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                      <TextBlock x:Name="TxtRecommendedFix" Text="-" Foreground="#FF6B00" FontWeight="Bold" FontSize="28"/>
+                      <TextBlock Text=" 项" Foreground="#64748B" FontSize="11" VerticalAlignment="Bottom" Margin="0,0,0,5"/>
+                    </StackPanel>
+                  </StackPanel>
+                </Button>
+
+                <!-- 驱动库 card -->
+                <Button x:Name="CardRepo" Style="{StaticResource CardBtn}" Margin="6,0,0,0">
+                  <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                      <Ellipse Width="7" Height="7" Fill="#3B82F6" Margin="0,0,6,0" VerticalAlignment="Center"/>
+                      <TextBlock Text="驱动库" Foreground="{StaticResource TextSecondary}" FontSize="11" VerticalAlignment="Center" FontWeight="Medium"/>
+                    </StackPanel>
+                    <TextBlock x:Name="TxtDashRepoHealth" Text="-" Foreground="#3B82F6" FontWeight="Bold" FontSize="18" VerticalAlignment="Bottom"/>
+                  </StackPanel>
+                </Button>
+
+              </UniformGrid>
+
+              <!-- Info tips (below cards) -->
+              <TextBlock x:Name="TxtHealthTips" Text="" FontSize="11" Foreground="#64748B" Margin="0,0,0,14" TextWrapping="Wrap" LineHeight="18"/>
+
+              <StackPanel Orientation="Horizontal" Margin="0,0,0,18">
+                <Button x:Name="BtnScan" Style="{StaticResource PrimaryBtn}" Background="{StaticResource AccentOrange}" MinWidth="140" Margin="0,0,10,0">
+                  <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="⊕  " FontSize="14" VerticalAlignment="Center"/>
+                    <TextBlock Text="立即扫描" VerticalAlignment="Center"/>
+                  </StackPanel>
+                </Button>
+                <Button x:Name="BtnFixRecommended" Style="{StaticResource GreenBtn}" MinWidth="140">
+                  <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="⚡  " FontSize="13" VerticalAlignment="Center"/>
+                    <TextBlock Text="修复推荐项" VerticalAlignment="Center"/>
+                  </StackPanel>
+                </Button>
+              </StackPanel>
+
+              <!-- Filter status bar (hidden when no filter is active) -->
+              <Border x:Name="DashFilterBar" Visibility="Collapsed" Background="#182818"
+                      BorderBrush="#22C55E" BorderThickness="1" Padding="12,8" Margin="0,0,0,12"
+                      CornerRadius="8">
+                <DockPanel>
+                  <Button x:Name="BtnClearDashFilter" DockPanel.Dock="Right"
+                          Content="✕ 显示全部" Foreground="#94A3B8" Background="#232936"
+                          BorderThickness="1" BorderBrush="#2A3140" Padding="10,3"
+                          FontSize="11" Cursor="Hand" VerticalAlignment="Center">
+                    <Button.Template>
+                      <ControlTemplate TargetType="Button">
+                        <Border x:Name="bd" Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="5" Padding="{TemplateBinding Padding}">
+                          <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                          <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="bd" Property="Background" Value="#2A3140"/>
+                            <Setter TargetName="bd" Property="BorderBrush" Value="#4ADE80"/>
+                          </Trigger>
+                        </ControlTemplate.Triggers>
+                      </ControlTemplate>
+                    </Button.Template>
+                  </Button>
+                  <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="⊙ " Foreground="#22C55E" FontSize="13" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="TxtDashFilterLabel" Text="" Foreground="#4ADE80"
+                               FontSize="12" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                  </StackPanel>
+                </DockPanel>
+              </Border>
+
+              <!-- Problem Devices Header -->
+              <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                <TextBlock Text="问题设备" FontSize="14" FontWeight="SemiBold" Foreground="{StaticResource TextPrimary}"/>
+                <TextBlock x:Name="TxtProblemCount" Text="" FontSize="12" Foreground="#94A3B8" Margin="8,1,0,0" VerticalAlignment="Bottom"/>
+              </StackPanel>
+
+              <!-- Empty state (shown before scan or when no issues) -->
+              <Border x:Name="BorderProblemEmpty" Background="#1E293B" CornerRadius="10" Padding="16,14"
+                      BorderBrush="{StaticResource BorderDark}" BorderThickness="1" Margin="0,0,0,18">
+                <TextBlock Text="尚未扫描。点击「立即扫描」后会在这里显示问题设备和操作按钮。"
+                           TextWrapping="Wrap" FontSize="12" Foreground="#CBD5E1" LineHeight="20"/>
+              </Border>
+
+              <!-- Problem device cards (shown after scan) -->
+              <ItemsControl x:Name="LstProblemDevices" Margin="0,0,0,18" Visibility="Collapsed">
+                <ItemsControl.ItemTemplate>
+                  <DataTemplate>
+                    <Border Background="#1A1F2C" CornerRadius="10" Padding="14,12" Margin="0,0,0,7"
+                            BorderBrush="#232936" BorderThickness="1">
+                      <Grid>
+                        <Grid.ColumnDefinitions>
+                          <ColumnDefinition Width="*"/>
+                          <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Left: device info -->
+                        <StackPanel Grid.Column="0" Margin="0,0,14,0">
+                          <TextBlock Text="{Binding DeviceName}" FontSize="13" FontWeight="SemiBold"
+                                     Foreground="#F1F5F9" TextTrimming="CharacterEllipsis"/>
+                          <DockPanel Margin="0,5,0,3">
+                            <TextBlock DockPanel.Dock="Left" Text="问题：" FontSize="11" Foreground="#64748B"/>
+                            <TextBlock DockPanel.Dock="Left" Text="{Binding IssueDetail}" FontSize="11" Foreground="#F87171" Margin="0,0,10,0"/>
+                            <TextBlock DockPanel.Dock="Left" Text="推荐：" FontSize="11" Foreground="#64748B"/>
+                            <TextBlock Text="{Binding PackageTitle}" FontSize="11" Foreground="#CBD5E1"
+                                       TextTrimming="CharacterEllipsis"/>
+                          </DockPanel>
+                          <!-- Tier badge -->
+                          <Border HorizontalAlignment="Left" CornerRadius="4" Padding="6,2" Margin="0,1,0,0">
+                            <Border.Style>
+                              <Style TargetType="Border">
+                                <Setter Property="Background" Value="#1E293B"/>
+                                <Style.Triggers>
+                                  <DataTrigger Binding="{Binding RecommendTier}" Value="可选">
+                                    <Setter Property="Background" Value="#1A2F1A"/>
+                                  </DataTrigger>
+                                  <DataTrigger Binding="{Binding RecommendTier}" Value="推荐">
+                                    <Setter Property="Background" Value="#2A1F14"/>
+                                  </DataTrigger>
+                                </Style.Triggers>
+                              </Style>
+                            </Border.Style>
+                            <TextBlock Text="{Binding RecommendTier}" FontSize="10" FontWeight="SemiBold">
+                              <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                  <Setter Property="Foreground" Value="#64748B"/>
+                                  <Style.Triggers>
+                                    <DataTrigger Binding="{Binding RecommendTier}" Value="可选">
+                                      <Setter Property="Foreground" Value="#4ADE80"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding RecommendTier}" Value="推荐">
+                                      <Setter Property="Foreground" Value="#FF8533"/>
+                                    </DataTrigger>
+                                  </Style.Triggers>
+                                </Style>
+                              </TextBlock.Style>
+                            </TextBlock>
+                          </Border>
+                        </StackPanel>
+
+                        <!-- Right: action buttons -->
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                          <!-- Action button: orange for auto-fix, secondary for manual search -->
+                          <Button x:Name="BtnCardAction" Content="{Binding ButtonText}"
+                                  Tag="{Binding DeviceKey}" IsEnabled="{Binding CanFix}"
+                                  MinWidth="92" Height="30" Margin="0,0,6,0" Padding="12,3"
+                                  FontSize="11" FontWeight="SemiBold" Cursor="Hand" BorderThickness="0">
+                            <Button.Style>
+                              <Style TargetType="Button">
+                                <Setter Property="Background" Value="#374151"/>
+                                <Setter Property="Foreground" Value="#CBD5E1"/>
+                                <Setter Property="Template">
+                                  <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                      <Border x:Name="bd" Background="{TemplateBinding Background}"
+                                              CornerRadius="6" Padding="{TemplateBinding Padding}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                      </Border>
+                                      <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                          <Setter TargetName="bd" Property="Opacity" Value="0.85"/>
+                                        </Trigger>
+                                        <Trigger Property="IsEnabled" Value="False">
+                                          <Setter Property="Opacity" Value="0.4"/>
+                                        </Trigger>
+                                      </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                  </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                  <DataTrigger Binding="{Binding ButtonText}" Value="下载并修复">
+                                    <Setter Property="Background" Value="#FF6B00"/>
+                                    <Setter Property="Foreground" Value="White"/>
+                                  </DataTrigger>
+                                  <DataTrigger Binding="{Binding ButtonText}" Value="修复">
+                                    <Setter Property="Background" Value="#FF6B00"/>
+                                    <Setter Property="Foreground" Value="White"/>
+                                  </DataTrigger>
+                                </Style.Triggers>
+                              </Style>
+                            </Button.Style>
+                          </Button>
+                          <Button x:Name="BtnCardDetail" Content="详情"
+                                  Tag="{Binding DeviceKey}"
+                                  MinWidth="46" Height="30" Padding="8,3"
+                                  FontSize="11" Cursor="Hand" BorderThickness="1" BorderBrush="#2A3140"
+                                  Background="#1E2430" Foreground="#94A3B8">
+                            <Button.Template>
+                              <ControlTemplate TargetType="Button">
+                                <Border x:Name="bd" Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="6" Padding="{TemplateBinding Padding}">
+                                  <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                  <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="bd" Property="Background" Value="#252B38"/>
+                                    <Setter TargetName="bd" Property="BorderBrush" Value="#3D4F6A"/>
+                                  </Trigger>
+                                </ControlTemplate.Triggers>
+                              </ControlTemplate>
+                            </Button.Template>
+                          </Button>
+                        </StackPanel>
+                      </Grid>
+                    </Border>
+                  </DataTemplate>
+                </ItemsControl.ItemTemplate>
+              </ItemsControl>
+
+              <!-- hidden legacy text control kept for backward compat -->
+              <TextBlock x:Name="TxtProblemDevices" Visibility="Collapsed"/>
+
+
+
+              <TextBlock Text="最近修复记录" FontSize="14" FontWeight="SemiBold" Foreground="{StaticResource TextPrimary}" Margin="0,0,0,8"/>
+
+              <Border Background="#1E293B" CornerRadius="10" Padding="16,14" BorderBrush="{StaticResource BorderDark}" BorderThickness="1">
+
+                <StackPanel>
+
+                  <TextBlock x:Name="TxtRecentRepairs" Text="暂无修复记录，扫描后点击「修复推荐项」即可。" TextWrapping="Wrap"
+
+                             FontSize="12" Foreground="#CBD5E1" LineHeight="20"/>
+
+                  <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+
+                    <TextBlock Text="提示：" FontSize="11" Foreground="#FF8533" FontWeight="SemiBold"/>
+
+                    <TextBlock Text="首次使用建议先点击「立即扫描」检测当前设备状态。"
+
+                               FontSize="11" Foreground="#94A3B8" Margin="2,0,0,0"/>
+
+                  </StackPanel>
+
+                </StackPanel>
+
+              </Border>
+
+
+
+              <TextBlock x:Name="TxtIssueCount" Visibility="Collapsed" Text="0"/>
+
+              <TextBlock x:Name="TxtOptionalFix" Visibility="Collapsed" Text="-"/>
+
+              <TextBlock x:Name="TxtUnsafeFix" Visibility="Collapsed" Text="-"/>
+
+              <TextBlock x:Name="TxtManifestVer" Visibility="Collapsed" Text="-"/>
+
+              <TextBlock x:Name="TxtDriverSource" Visibility="Collapsed" Text=""/>
+
+              <TextBlock x:Name="TxtSourceDetail" Visibility="Collapsed" Text=""/>
+
+              <TextBlock x:Name="TxtScenario" Visibility="Collapsed" Text=""/>
+
+            </StackPanel>
+
+          </ScrollViewer>
+
+        </Border>
+
+
+
+        <!-- Driver Center -->
+
+        <Border x:Name="PageDrivers" Visibility="Collapsed" Background="{StaticResource BgPanel}" CornerRadius="10"
+
+                Padding="12" BorderBrush="{StaticResource BorderDark}" BorderThickness="1">
+
+          <Grid>
+
+            <Grid.RowDefinitions>
+
+              <RowDefinition Height="Auto"/>
+
+              <RowDefinition Height="*"/>
+
+              <RowDefinition Height="Auto"/>
+
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Margin="4,0,4,8">
+
+              <StackPanel Orientation="Horizontal">
+
+                <Button x:Name="BtnSelectAll" Content="全选" Style="{StaticResource GhostBtn}" MinWidth="64" MinHeight="30"/>
+
+                <Button x:Name="BtnSelectNone" Content="取消全选" Style="{StaticResource GhostBtn}" MinWidth="80" MinHeight="30" Margin="6,0,0,0"/>
+
+                <Button x:Name="BtnSelectRecommended" Content="仅选推荐项" Style="{StaticResource GhostBtn}" MinWidth="96" MinHeight="30" Margin="6,0,0,0"/>
+
+                <Button x:Name="BtnFixAll" Content="修复已选 (0)" Style="{StaticResource GreenBtn}" MinWidth="120" MinHeight="36" Margin="16,0,0,0"/>
+
+              </StackPanel>
+
+              <TextBlock x:Name="TxtVersionSummary" Margin="0,8,0,0" Foreground="{StaticResource TextSecondary}" FontSize="11" TextWrapping="Wrap"/>
+
+            </StackPanel>
+
+            <DataGrid x:Name="GridDrivers" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="False"
+
+                      CanUserAddRows="False" CanUserDeleteRows="False" SelectionMode="Single"
+
+                      ScrollViewer.CanContentScroll="True" EnableRowVirtualization="True">
+
+              <DataGrid.Columns>
+
+                <DataGridCheckBoxColumn Header="选" Binding="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}" Width="42"/>
+
+                <DataGridTemplateColumn Header="操作" Width="100" IsReadOnly="True">
+                  <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                      <Button x:Name="BtnRowAction" Content="{Binding ButtonText}"
+                              Tag="{Binding DeviceKey}" IsEnabled="{Binding CanFix}"
+                              MinWidth="86" Height="24" Padding="6,2" FontSize="11"
+                              Cursor="Hand" Margin="2,0"/>
+                    </DataTemplate>
+                  </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Header="设备 / 驱动" Binding="{Binding DeviceName}" Width="*" MinWidth="120" IsReadOnly="True"/>
+
+                <DataGridTextColumn Header="问题" Binding="{Binding IssueDetail}" Width="82" IsReadOnly="True"/>
+
+                <DataGridTextColumn Header="状态" Binding="{Binding VersionStatus}" Width="72" IsReadOnly="True"/>
+
+                <DataGridTextColumn Header="推荐级别" Binding="{Binding RecommendTier}" Width="88" IsReadOnly="True"/>
+
+                <DataGridTextColumn Header="可信" Binding="{Binding TrustBadge}" Width="120" IsReadOnly="True"/>
+
+                <DataGridTextColumn Header="推荐驱动" Binding="{Binding PackageTitle}" Width="160" MinWidth="100" IsReadOnly="True"/>
+
+                <DataGridTextColumn Header="类别" Binding="{Binding Category}" Width="64" IsReadOnly="True"/>
+
+                <DataGridTextColumn Header="匹配" Binding="{Binding Confidence}" Width="52" IsReadOnly="True"/>
+
+              </DataGrid.Columns>
+
+            </DataGrid>
+
+            <Border Grid.Row="2" Margin="4,8,4,0" Padding="10" Background="#1E293B" CornerRadius="8" BorderBrush="{StaticResource BorderDark}" BorderThickness="1">
+
+              <TextBlock x:Name="TxtDriverDetail" Text="点击表格行查看详情，或点右上角按钮展开完整信息" TextWrapping="Wrap" FontSize="12" Foreground="#CBD5E1"/>
+
+            </Border>
+
+            <!-- Sliding driver detail drawer (right side) -->
+
+            <Border x:Name="DriverDetailDrawer" Grid.RowSpan="3" Width="400" HorizontalAlignment="Right"
+
+                    Background="#1A1F2C" BorderBrush="#FF6B00" BorderThickness="1,0,0,0"
+
+                    Visibility="Collapsed" Panel.ZIndex="40">
+
+              <Border.RenderTransform>
+
+                <TranslateTransform x:Name="DriverDetailDrawerTransform" X="400"/>
+
+              </Border.RenderTransform>
+
+              <Border.Effect>
+
+                <DropShadowEffect BlurRadius="20" ShadowDepth="-3" Direction="180" Color="Black" Opacity="0.45"/>
+
+              </Border.Effect>
+
+              <Grid>
+
+                <Grid.RowDefinitions>
+
+                  <RowDefinition Height="Auto"/>
+
+                  <RowDefinition Height="*"/>
+
+                  <RowDefinition Height="Auto"/>
+
+                </Grid.RowDefinitions>
+
+                <Border Grid.Row="0" Padding="20,18,16,14" BorderBrush="#2A3140" BorderThickness="0,0,0,1">
+
+                  <Grid>
+
+                    <Grid.ColumnDefinitions>
+
+                      <ColumnDefinition Width="*"/>
+
+                      <ColumnDefinition Width="Auto"/>
+
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0">
+
+                      <TextBlock Text="驱动详情" FontSize="14" FontWeight="Bold" Foreground="#FF8533"/>
+
+                      <TextBlock x:Name="TxtDrawerDeviceName" Text="-" FontSize="13" FontWeight="SemiBold"
+
+                                 Foreground="#F1F5F9" Margin="0,4,0,0" TextWrapping="Wrap"/>
+
+                    </StackPanel>
+
+                    <Button x:Name="BtnDrawerClose" Grid.Column="1" Content="关闭" Width="56" Height="28"
+
+                            Background="#232936" Foreground="#94A3B8" BorderThickness="0" FontSize="11" Cursor="Hand">
+
+                      <Button.Template>
+
+                        <ControlTemplate TargetType="Button">
+
+                          <Border Background="{TemplateBinding Background}" CornerRadius="6">
+
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                          </Border>
+
+                        </ControlTemplate>
+
+                      </Button.Template>
+
+                    </Button>
+
+                  </Grid>
+
+                </Border>
+
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Padding="20,16,18,12">
+
+                  <StackPanel>
+
+                    <!-- Version comparison card -->
+
+                    <Border Background="#0F1218" CornerRadius="8" Padding="14,12,14,12" Margin="0,0,0,12">
+
+                      <Grid>
+
+                        <Grid.ColumnDefinitions>
+
+                          <ColumnDefinition Width="*"/>
+
+                          <ColumnDefinition Width="Auto"/>
+
+                          <ColumnDefinition Width="*"/>
+
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0">
+
+                          <TextBlock Text="当前版本" FontSize="10" Foreground="#64748B"/>
+
+                          <TextBlock x:Name="TxtDrawerCurrentVer" Text="-" FontSize="14" FontWeight="Bold" Foreground="#CBD5E1" Margin="0,3,0,0"/>
+
+                        </StackPanel>
+
+                        <TextBlock Grid.Column="1" Text=">" FontSize="22" FontWeight="Bold" Foreground="#FF8533"
+
+                                   VerticalAlignment="Center" Margin="6,0,6,0"/>
+
+                        <StackPanel Grid.Column="2">
+
+                          <TextBlock Text="推荐版本" FontSize="10" Foreground="#64748B"/>
+
+                          <TextBlock x:Name="TxtDrawerTargetVer" Text="-" FontSize="14" FontWeight="Bold" Foreground="#22C55E" Margin="0,3,0,0"/>
+
+                        </StackPanel>
+
+                      </Grid>
+
+                    </Border>
+
+                    <!-- Status badges -->
+
+                    <WrapPanel x:Name="DrawerBadges" Margin="0,0,0,12"/>
+
+                    <!-- Detail rows -->
+
+                    <StackPanel x:Name="DrawerDetailList"/>
+
+                  </StackPanel>
+
+                </ScrollViewer>
+
+                <Border Grid.Row="2" Background="#0F1218" Padding="20,12,18,14" BorderBrush="#2A3140" BorderThickness="0,1,0,0">
+
+                  <StackPanel>
+
+                    <Button x:Name="BtnDrawerCopyHwid" Content="复制 HWID 用于反馈" Height="34" FontSize="11"
+
+                            Background="#232936" Foreground="#F1F5F9" BorderThickness="0" Cursor="Hand"
+
+                            HorizontalContentAlignment="Center">
+
+                      <Button.Template>
+
+                        <ControlTemplate TargetType="Button">
+
+                          <Border Background="{TemplateBinding Background}" CornerRadius="6">
+
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                          </Border>
+
+                        </ControlTemplate>
+
+                      </Button.Template>
+
+                    </Button>
+
+                  </StackPanel>
+
+                </Border>
+
+              </Grid>
+
+            </Border>
+
+          </Grid>
+
+        </Border>
+
+
+
+        <!-- Quick Fix -->
+
+        <Border x:Name="PageQuickFix" Visibility="Collapsed" Background="{StaticResource BgPanel}" CornerRadius="10"
+
+                Padding="24" BorderBrush="{StaticResource BorderDark}" BorderThickness="1">
+
+          <StackPanel VerticalAlignment="Top" MaxWidth="560">
+
+            <TextBlock Text="快速修复" FontSize="18" FontWeight="SemiBold" Foreground="{StaticResource TextPrimary}" Margin="0,0,0,16"/>
+
+            <TextBlock x:Name="TxtQuickFixSummary" Text="请先扫描。推荐修复项将显示在此。" TextWrapping="Wrap" FontSize="13" Foreground="#CBD5E1" LineHeight="22" Margin="0,0,0,20"/>
+
+            <Button x:Name="BtnQuickFix" Content="修复推荐项" Style="{StaticResource GreenBtn}" MinWidth="180" HorizontalAlignment="Left"/>
+
+          </StackPanel>
+
+        </Border>
+
+
+
+        <!-- Deploy Mode -->
+
+        <Border x:Name="PageDeploy" Visibility="Collapsed" Background="{StaticResource BgPanel}" CornerRadius="10"
+
+                Padding="24" BorderBrush="{StaticResource BorderDark}" BorderThickness="1">
+
+          <StackPanel MaxWidth="520">
+
+            <TextBlock Text="装机模式" FontSize="18" FontWeight="SemiBold" Foreground="#FF6B00" Margin="0,0,0,8"/>
+
+            <TextBlock Text="自动扫描 · 自动选择推荐项 · 自动安装 · 导出 HTML 报告" FontSize="12" Foreground="{StaticResource TextSecondary}" TextWrapping="Wrap" Margin="0,0,0,16"/>
+
+            <CheckBox x:Name="ChkDeployAutoFix" Content="自动安装推荐驱动" IsChecked="True"/>
+
+            <CheckBox x:Name="ChkDeployReboot" Content="安装完成自动重启" IsChecked="False"/>
+
+            <CheckBox x:Name="ChkDeployReport" Content="导出安装报告 (HTML)" IsChecked="True"/>
+
+            <CheckBox x:Name="ChkDeploySilent" Content="静默运行 (少弹窗)" IsChecked="False"/>
+
+            <Button x:Name="BtnDeployStart" Content="开始装机" Style="{StaticResource PrimaryBtn}" Background="{StaticResource AccentOrange}" MinWidth="160" MinHeight="48" Margin="0,16,0,0" HorizontalAlignment="Left"/>
+
+            <TextBlock Text="CLI: DriverBooster.ps1 -DeployMode -AutoFix -RebootIfNeeded" FontSize="10" Foreground="#64748B" Margin="0,16,0,0" TextWrapping="Wrap"/>
+
+          </StackPanel>
+
+        </Border>
+
+
+
+        <!-- Repository Center -->
+
+        <Border x:Name="PageRepo" Visibility="Collapsed" Background="{StaticResource BgPanel}" CornerRadius="10"
+
+                Padding="24" BorderBrush="{StaticResource BorderDark}" BorderThickness="1">
+
+          <StackPanel MaxWidth="560">
+
+            <TextBlock Text="驱动仓库" FontSize="18" FontWeight="SemiBold" Foreground="{StaticResource TextPrimary}" Margin="0,0,0,16"/>
+
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,12">
+
+              <TextBlock x:Name="TxtRepoHealth" Text="-" Foreground="#22C55E" FontWeight="SemiBold" FontSize="14" VerticalAlignment="Center"/>
+
+              <Button x:Name="BtnRepoRepair" Content="修复仓库" Style="{StaticResource GhostBtn}" MinWidth="88" MinHeight="32" Margin="12,0,0,0"/>
+
+              <Button x:Name="BtnSync" Content="同步镜像" Style="{StaticResource GhostBtn}" MinWidth="88" MinHeight="32" Margin="8,0,0,0"/>
+
+            </StackPanel>
+
+            <TextBlock x:Name="TxtRepoDetail" Text="" TextWrapping="Wrap" FontSize="12" Foreground="#CBD5E1" LineHeight="20"/>
+
+          </StackPanel>
+
+        </Border>
+
+
+
+        <!-- Rollback Center -->
+
+        <Border x:Name="PageRollback" Visibility="Collapsed" Background="{StaticResource BgPanel}" CornerRadius="10"
+
+                Padding="16" BorderBrush="{StaticResource BorderDark}" BorderThickness="1">
+
+          <Grid>
+
+            <Grid.RowDefinitions>
+
+              <RowDefinition Height="Auto"/>
+
+              <RowDefinition Height="*"/>
+
+              <RowDefinition Height="Auto"/>
+
+              <RowDefinition Height="Auto"/>
+
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="回滚中心" FontSize="18" FontWeight="SemiBold" Foreground="{StaticResource TextPrimary}" Margin="4,4,4,12"/>
+
+            <ListBox x:Name="LstTransactions" Grid.Row="1" DisplayMemberPath="Label"
+                     Background="#1E2430" BorderBrush="#2A3140" Foreground="#F1F5F9" FontSize="12"/>
+
+            <TextBlock x:Name="TxtRollbackDetail" Grid.Row="2" Margin="4,12,4,8" TextWrapping="Wrap" FontSize="12" Foreground="#94A3B8"/>
+
+            <Button x:Name="BtnRollbackSelected" Grid.Row="3" Content="回滚选中事务" Style="{StaticResource GhostBtn}" MinWidth="140" HorizontalAlignment="Left" Margin="4,0,0,4"/>
+
+            <Button x:Name="BtnRollbackLast" Visibility="Collapsed"/>
+
+          </Grid>
+
+        </Border>
+
+
+
+        <!-- Logs -->
+
+        <Border x:Name="PageLogs" Visibility="Collapsed" Background="{StaticResource BgPanel}" CornerRadius="10"
+
+                Padding="12" BorderBrush="{StaticResource BorderDark}" BorderThickness="1">
+
+          <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+            <TextBlock x:Name="TxtLog" Text="就绪。" Foreground="#94A3B8" FontFamily="Consolas" FontSize="11" TextWrapping="Wrap" LineHeight="16"/>
+
+          </ScrollViewer>
+
+        </Border>
+
+
+
+        <!-- Settings -->
+
+        <Border x:Name="PageSettings" Visibility="Collapsed" Background="{StaticResource BgPanel}" CornerRadius="10"
+
+                Padding="24" BorderBrush="{StaticResource BorderDark}" BorderThickness="1">
+
+          <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+            <StackPanel MaxWidth="520">
+
+              <TextBlock Text="设置" FontSize="18" FontWeight="SemiBold" Foreground="{StaticResource TextPrimary}" Margin="0,0,0,16"/>
+
+              <TextBlock Text="安装保护" FontSize="13" FontWeight="SemiBold" Foreground="#FF6B00" Margin="0,0,0,8"/>
+
+              <CheckBox x:Name="ChkRestore" Content="安装前创建系统还原点" IsChecked="True"/>
+
+              <CheckBox x:Name="ChkBackup" Content="安装前备份驱动" IsChecked="True"/>
+
+              <CheckBox x:Name="ChkRollback" Content="失败自动回滚" IsChecked="True"/>
+
+              <CheckBox x:Name="ChkOutdated" Content="检测过时驱动" IsChecked="False"/>
+
+              <Separator Background="#2A3140" Margin="0,12,0,12"/>
+
+              <TextBlock Text="场景快捷扫描" FontSize="13" FontWeight="SemiBold" Foreground="{StaticResource TextSecondary}" Margin="0,0,0,8"/>
+
+              <Button x:Name="BtnScenarioAll" Content="全部设备" Style="{StaticResource SidebarBtn}" Background="#2A3140"/>
+
+              <Button x:Name="BtnScenarioAudio" Content="无声音 / 音频" Style="{StaticResource SidebarBtn}"/>
+
+              <Button x:Name="BtnScenarioNetwork" Content="无网络 / Wi-Fi" Style="{StaticResource SidebarBtn}"/>
+
+              <Button x:Name="BtnScenarioUsb" Content="USB 无法识别" Style="{StaticResource SidebarBtn}"/>
+
+              <Separator Background="#2A3140" Margin="0,12,0,12"/>
+
+              <Button x:Name="BtnInstallLocal" Content="安装本地驱动库" Style="{StaticResource SidebarBtn}" MinHeight="42"/>
+
+            </StackPanel>
+
+          </ScrollViewer>
+
+        </Border>
+
+
+
+      </Grid>
+
+    </Grid>
+
+
+
+    <!-- Bottom status bar -->
+
+    <Border Grid.Row="2" Background="#0F1218" BorderBrush="#1E2433" BorderThickness="0,1,0,0" Padding="20,10,20,12">
+
+      <StackPanel>
+
+        <Grid Margin="0,0,0,6">
+
+          <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Ellipse x:Name="StatusDot" Width="6" Height="6" Fill="#22C55E" Margin="0,0,7,0" VerticalAlignment="Center"/>
+            <TextBlock x:Name="TxtProgress" Text="准备就绪" FontSize="11" Foreground="#94A3B8"
+                       FontWeight="Normal" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"
+                       MaxWidth="600" VerticalAlignment="Center"/>
+          </StackPanel>
+
+          <TextBlock x:Name="TxtProgressPercent" Text="" FontSize="11" Foreground="#FF8533"
+                     FontWeight="SemiBold" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+        </Grid>
+
+        <Border CornerRadius="4" Background="#1A1F2C" SnapsToDevicePixels="True">
+
+          <ProgressBar x:Name="Progress" Height="4" Minimum="0" Maximum="100" Value="0"
+                       Background="Transparent" BorderThickness="0" Foreground="#FF6B00"/>
+
+        </Border>
+
+      </StackPanel>
+
+    </Border>
+
+
+
+    <!-- Toast container (floating bottom-right) -->
+
+    <ItemsControl x:Name="ToastHost" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+
+                  Margin="0,0,32,32" Panel.ZIndex="50" IsHitTestVisible="False">
+
+      <ItemsControl.ItemsPanel>
+
+        <ItemsPanelTemplate>
+
+          <StackPanel/>
+
+        </ItemsPanelTemplate>
+
+      </ItemsControl.ItemsPanel>
+
+    </ItemsControl>
+
+
+
+    <!-- Welcome overlay -->
+
+    <Border x:Name="BorderWelcome" Grid.Row="1" Background="#CC0F1218" Visibility="Collapsed" Panel.ZIndex="20">
+
+      <Border Background="#1E2430" BorderBrush="#FF6B00" BorderThickness="2" CornerRadius="12"
+
+              MaxWidth="520" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="28,24">
+
+        <StackPanel>
+
+          <TextBlock Text="欢迎使用 Yanbai驱动" FontSize="18" FontWeight="Bold" Foreground="#FF6B00" Margin="0,0,0,12"/>
+
+          <TextBlock Text="1. 首页点击「立即扫描」" FontSize="13" Foreground="#F1F5F9" Margin="0,0,0,8"/>
+
+          <TextBlock Text="2. 驱动中心查看详情并勾选" FontSize="13" Foreground="#F1F5F9" Margin="0,0,0,8"/>
+
+          <TextBlock Text="3. 快速修复一键安装推荐项" FontSize="13" Foreground="#F1F5F9" Margin="0,0,0,16"/>
+
+          <Button x:Name="BtnDismissWelcome" Content="知道了，开始" Style="{StaticResource PrimaryBtn}"
+
+                  Background="{StaticResource AccentOrange}" HorizontalAlignment="Center" MinWidth="180"/>
+
+        </StackPanel>
+
+      </Border>
+
+    </Border>
+
+  </Grid>
+
+</Window>
+
+

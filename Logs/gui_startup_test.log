@@ -1,0 +1,563 @@
+﻿[13:09:39.059] Load engine
+[13:09:39.393] Load WPF
+[13:09:39.412] Load XAML
+[13:09:39.520] XAML OK
+[13:09:39.536] FindName done
+[13:09:39.538] Load GuiDriverRow
+[13:09:39.720] GuiDriverRow OK
+[13:09:39.720] Test DriverGridRow
+[13:09:39.720] DriverGridRow type OK
+[13:09:39.720] ALL OK
+[13:11:23.601] Load engine
+[13:11:23.969] Load WPF
+[13:11:23.987] Load XAML
+[13:11:24.089] XAML OK
+[13:11:24.104] FindName done
+[13:11:24.105] Load GuiDriverRow
+[13:11:24.304] GuiDriverRow OK
+[13:11:24.305] Test DriverGridRow
+[13:11:24.305] DriverGridRow type OK
+[13:11:24.305] ALL OK
+[13:17:43.344] Load engine
+[13:17:43.689] Load WPF
+[13:17:43.705] Load XAML
+[13:17:43.811] XAML OK
+[13:17:43.825] FindName done
+[13:17:43.827] Load GuiDriverRow
+[13:17:44.034] GuiDriverRow OK
+[13:17:44.036] Test DriverGridRow
+[13:17:44.046] DriverGridRow type OK
+[13:17:44.049] ALL OK
+[13:35:31.227] Load engine
+[13:35:31.666] Load WPF
+[13:35:31.682] Load XAML
+[13:35:31.786] XAML OK
+[13:35:31.802] FindName done
+[13:35:31.802] Load GuiDriverRow
+[13:35:31.996] GuiDriverRow OK
+[13:35:31.996] Test DriverGridRow
+[13:35:32.002] DriverGridRow type OK
+[13:35:32.004] ALL OK
+[13:36:08.672] Load engine
+[13:36:08.720] FAIL: System.Management.Automation.CommandNotFoundException: 无法将“Initialize-CIODIYEngine”项识别为 cmdlet、函数、脚本文件或可运行程序的名称。请检查名称的拼写，如果包括路径，请确保路径正确，然后再试一次。
+[13:36:08.720] 在 <ScriptBlock>、C:\Users\admin\Desktop\驱动检测安装\scripts\test-gui-startup.ps1 中: 第 15 行
+[13:36:32.757] Load engine
+[13:36:33.072] Engine OK
+[13:36:33.074] Load WPF
+[13:36:33.075] Load XAML
+[13:36:33.176] XAML OK
+[13:36:33.192] FindName done
+[13:36:33.192] Load GuiDriverRow
+[13:36:33.399] GuiDriverRow OK
+[13:36:33.399] Test DriverGridRow
+[13:36:33.405] DriverGridRow type OK
+[13:36:33.405] ALL OK
+[14:24:12.441] Load engine
+[14:24:12.819] Engine OK
+[14:24:12.821] Load WPF
+[14:24:12.839] Load XAML
+[14:24:12.935] XAML OK
+[14:24:12.950] FindName done
+[14:24:12.952] Load GuiDriverRow
+[14:24:13.149] GuiDriverRow OK
+[14:24:13.151] Test DriverGridRow
+[14:24:13.157] DriverGridRow type OK
+[14:24:13.159] ALL OK
+[14:28:41.952] Load engine
+[14:28:42.301] Engine OK
+[14:28:42.304] Load WPF
+[14:28:42.319] Load XAML
+[14:28:42.418] XAML OK
+[14:28:42.423] FindName done
+[14:28:42.434] Load GuiDriverRow
+[14:28:42.609] GuiDriverRow OK
+[14:28:42.609] Test DriverGridRow
+[14:28:42.620] DriverGridRow type OK
+[14:28:42.622] ALL OK
+[14:30:34.125] Load engine
+[14:30:34.512] Engine OK
+[14:30:34.514] Load WPF
+[14:30:34.529] Load XAML
+[14:30:34.637] XAML OK
+[14:30:34.652] FindName done
+[14:30:34.657] Load GuiDriverRow
+[14:30:34.861] GuiDriverRow OK
+[14:30:34.863] Test DriverGridRow
+[14:30:34.868] DriverGridRow type OK
+[14:30:34.869] ALL OK
+[14:30:35.538] Load engine
+[14:30:35.897] Engine OK
+[14:30:35.897] Load WPF
+[14:30:35.907] Load XAML
+[14:30:36.005] XAML OK
+[14:30:36.020] FindName done
+[14:30:36.024] Load GuiDriverRow
+[14:30:36.194] GuiDriverRow OK
+[14:30:36.205] Test DriverGridRow
+[14:30:36.206] DriverGridRow type OK
+[14:30:36.206] ALL OK
+[14:33:12.161] Load engine
+[14:33:12.505] Engine OK
+[14:33:12.505] Load WPF
+[14:33:12.515] Load XAML
+[14:33:12.593] XAML OK
+[14:33:12.609] FindName done
+[14:33:12.609] Load GuiDriverRow
+[14:33:12.796] GuiDriverRow OK
+[14:33:12.796] Test DriverGridRow
+[14:33:12.806] DriverGridRow type OK
+[14:33:12.808] ALL OK
+[14:33:52.383] Load engine
+[14:33:52.749] Engine OK
+[14:33:52.749] Load WPF
+[14:33:52.767] Load XAML
+[14:33:52.844] XAML OK
+[14:33:52.860] FindName done
+[14:33:52.860] Load GuiDriverRow
+[14:33:53.049] GuiDriverRow OK
+[14:33:53.052] Test DriverGridRow
+[14:33:53.057] DriverGridRow type OK
+[14:33:53.059] ALL OK
+[14:47:27.694] Load engine
+[14:47:27.822] FAIL: System.Management.Automation.ParseException: 所在位置 C:\Users\admin\Desktop\驱动检测安装\lib\Types.ps1:130 字符: 16
++         else { '寰呭鐞? }
++                ~~~~~~~~
+字符串缺少终止符: '。
+
+所在位置 C:\Users\admin\Desktop\驱动检测安装\lib\Types.ps1:130 字符: 14
++         else { '寰呭鐞? }
++              ~
+语句块或类型定义中缺少右“}”。
+
+所在位置 C:\Users\admin\Desktop\驱动检测安装\lib\Types.ps1:89 字符: 38
++ function ConvertTo-CIODIYFixPlanItem {
++                                      ~
+语句块或类型定义中缺少右“}”。
+[14:47:27.825] 在 <ScriptBlock>、C:\Users\admin\Desktop\驱动检测安装\engine\Initialize-Engine.ps1 中: 第 18 行
+在 <ScriptBlock>、C:\Users\admin\Desktop\驱动检测安装\engine\DriverEngine.ps1 中: 第 7 行
+在 <ScriptBlock>、C:\Users\admin\Desktop\驱动检测安装\scripts\test-gui-startup.ps1 中: 第 17 行
+[14:47:29.568] Load engine
+[14:47:29.685] FAIL: System.Management.Automation.ParseException: 所在位置 C:\Users\admin\Desktop\驱动检测安装\lib\Types.ps1:130 字符: 16
++         else { '寰呭鐞? }
++                ~~~~~~~~
+字符串缺少终止符: '。
+
+所在位置 C:\Users\admin\Desktop\驱动检测安装\lib\Types.ps1:130 字符: 14
++         else { '寰呭鐞? }
++              ~
+语句块或类型定义中缺少右“}”。
+
+所在位置 C:\Users\admin\Desktop\驱动检测安装\lib\Types.ps1:89 字符: 38
++ function ConvertTo-CIODIYFixPlanItem {
++                                      ~
+语句块或类型定义中缺少右“}”。
+[14:47:29.685] 在 <ScriptBlock>、C:\Users\admin\Desktop\驱动检测安装\engine\Initialize-Engine.ps1 中: 第 18 行
+在 <ScriptBlock>、C:\Users\admin\Desktop\驱动检测安装\engine\DriverEngine.ps1 中: 第 7 行
+在 <ScriptBlock>、C:\Users\admin\Desktop\驱动检测安装\scripts\test-gui-startup.ps1 中: 第 17 行
+[14:49:45.858] Load engine
+[14:49:46.181] Engine OK
+[14:49:46.181] Load WPF
+[14:49:46.197] Load XAML
+[14:49:46.276] XAML OK
+[14:49:46.292] FindName done
+[14:49:46.292] Load GuiDriverRow
+[14:49:46.451] GuiDriverRow OK
+[14:49:46.451] Test DriverGridRow
+[14:49:46.467] DriverGridRow type OK
+[14:49:46.467] ALL OK
+[14:49:48.798] Load engine
+[14:49:49.102] Engine OK
+[14:49:49.102] Load WPF
+[14:49:49.118] Load XAML
+[14:49:49.196] XAML OK
+[14:49:49.212] FindName done
+[14:49:49.212] Load GuiDriverRow
+[14:49:49.371] GuiDriverRow OK
+[14:49:49.371] Test DriverGridRow
+[14:49:49.387] DriverGridRow type OK
+[14:49:49.387] ALL OK
+[14:55:06.196] Load engine
+[14:55:06.327] FAIL: System.Management.Automation.ParseException: 所在位置 C:\Users\admin\Desktop\驱动检测安装\lib\DriverVersionAnalyzer.ps1:58 字符: 10
++         'GenericMicrosoft' { return '閫氱敤椹卞姩' }
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+表达式或语句中包含意外的标记“GenericMicrosoft' { return '閫氱敤椹卞姩' }
+        'DeviceError'      { return '寮傚父椹卞姩' }
+        'UpToDate'         { return '宸叉槸鏈€鏂?”。
+[14:55:06.330] 在 <ScriptBlock>、C:\Users\admin\Desktop\驱动检测安装\engine\Initialize-Engine.ps1 中: 第 20 行
+在 <ScriptBlock>、C:\Users\admin\Desktop\驱动检测安装\engine\DriverEngine.ps1 中: 第 7 行
+在 <ScriptBlock>、C:\Users\admin\Desktop\驱动检测安装\scripts\test-gui-startup.ps1 中: 第 17 行
+[14:55:08.062] Load engine
+[14:55:08.178] FAIL: System.Management.Automation.ParseException: 所在位置 C:\Users\admin\Desktop\驱动检测安装\lib\DriverVersionAnalyzer.ps1:58 字符: 10
++         'GenericMicrosoft' { return '閫氱敤椹卞姩' }
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+表达式或语句中包含意外的标记“GenericMicrosoft' { return '閫氱敤椹卞姩' }
+        'DeviceError'      { return '寮傚父椹卞姩' }
+        'UpToDate'         { return '宸叉槸鏈€鏂?”。
+[14:55:08.178] 在 <ScriptBlock>、C:\Users\admin\Desktop\驱动检测安装\engine\Initialize-Engine.ps1 中: 第 20 行
+在 <ScriptBlock>、C:\Users\admin\Desktop\驱动检测安装\engine\DriverEngine.ps1 中: 第 7 行
+在 <ScriptBlock>、C:\Users\admin\Desktop\驱动检测安装\scripts\test-gui-startup.ps1 中: 第 17 行
+[14:55:21.702] Load engine
+[14:55:21.831] FAIL: System.Management.Automation.ParseException: 所在位置 C:\Users\admin\Desktop\驱动检测安装\lib\DriverTrust.ps1:31 字符: 53
++         elseif ($vendor -and $whql -and $signed) { 'official' }
++                                                     ~~~~~~~~~~~
+表达式或语句中包含意外的标记“official' }
+        elseif ($vendor) { 'vendor' }
+        elseif ($raw.url -match 'github\.com') { 'community' }
+        else { 'unknown' }
+
+    $verifiedOn = if ($raw.verifiedOn) { [string]$raw.verifiedOn } else { '' }
+    $verifiedMachines = if ($raw.verifiedMachines) { [int]$raw.verifiedMachines } else { 0 }
+    $successRate = if ($null -ne $raw.installSuccessRate) { [double]$raw.installSuccessRate } else { $null }
+
+    if (-not $successRate -and $Package -and $Package.Id) {
+        $hint = Get-PackageSuccessRateHint -PackageId $Package.Id
+        if ($null -ne $hint) { $successRate = $hint }
+    }
+
+    $badgeParts = New-Object System.Collections.ArrayList
+    switch ($trustLevel) {
+        'official'   { [void]$badgeParts.Add('瀹樻柟椹卞姩') }
+        'vendor'     { [void]$badgeParts.Add('鍘傚晢椹卞姩') }
+        'community'  { [void]$badgeParts.Add('绀惧尯鍖?”。
+
+所在位置 C:\Users\admin\Desktop\驱动检测安装\lib\DriverTrust.ps1:31 字符: 53
++         elseif ($vendor -and $whql -and $signed) { 'official' }
++                                                     ~
+哈希文本不完整。
+
+所在位置 C:\Users\admin\Desktop\驱动检测安装\lib\DriverTrust.ps1:10 字符: 20
++     if (-not $raw) {
++                    ~
+语句块或类型定义中缺少右“}”。
+
+所在位置 C:\Users\admin\Desktop\驱动检测安装\lib\DriverTrust.ps1:3 字符: 31
++ function Get-PackageTrustMeta {
++                               ~
+语句块或类型定义中缺少右“}”。
+
+所在位置 C:\Users\admin\Desktop\驱动检测安装\lib\DriverTrust.ps1:49 字符: 52
++         'community'  { [void]$badgeParts.Add('绀惧尯鍖?) }
++                                                    ~
+表达式或语句中包含意外的标记“)”。
+
+所在位置 C:\Users\admin\Desktop\驱动检测安装\lib\DriverTrust.ps1:49 字符: 54
++         'community'  { [void]$badgeParts.Add('绀惧尯鍖?) }
++                                                      ~
+表达式或语句中包含意外的标记“}”。
+
+所在位置 C:\Users\admin\Desktop\驱动检测安装\lib\DriverTrust.ps1:52 字符: 41
++     if ($whql) { [void]$badgeParts.Add('WHQL') }
++                                         ~
+方法调用中缺少“)”。
+
+所在位置 C:\Users\admin\Desktop\驱动检测安装\lib\DriverTrust.ps1:52 字符: 41
++     if ($whql) { [void]$badgeParts.Add('WHQL') }
++                                         ~~~~~~~~
+表达式或语句中包含意外的标记“WHQL') }
+    if ($verifiedMachines -gt 0) { [void]$badgeParts.Add("宸查獙璇伱?verifiedMachines") }
+    elseif ($successRate -and $successRate -ge 0.9) { [void]$badgeParts.Add('楂樻垚鍔熺巼') }
+
+    return [PSCustomObject]@{
+        TrustLevel         = $trustLevel
+        SourceVendor       = $vendor
+        Whql               = $whql
+        VerifiedOn         = $verifiedOn
+        VerifiedMachines   = $verifiedMachines
+        InstallSuccessRate = $successRate
+        TrustBadge         = ($badgeParts -join '”。
+
+所在位置 C:\Users\admin\Desktop\驱动检测安装\lib\DriverTrust.ps1:50 字符: 22
++         default      { [void]$badgeParts.Add('寰呴獙璇?) }
++                      ~
+语句块或类型定义中缺少右“}”。
+
+所在位置 C:\Users\admin\Desktop\驱动检测安装\lib\DriverTrust.ps1:76 字符: 37
++         [void]$reasons.Add('鏉ユ簮鏈獙璇?)
++                                     ~
+表达式或语句中包含意外的标记“)”。
+
+并未报告所有分析错误。请更正报告的错误并重试。
+[14:55:21.834] 在 <ScriptBlock>、C:\Users\admin\Desktop\驱动检测安装\engine\Initialize-Engine.ps1 中: 第 21 行
+在 <ScriptBlock>、C:\Users\admin\Desktop\驱动检测安装\engine\DriverEngine.ps1 中: 第 7 行
+在 <ScriptBlock>、C:\Users\admin\Desktop\驱动检测安装\scripts\test-gui-startup.ps1 中: 第 17 行
+[14:55:23.563] Load engine
+[14:55:23.695] FAIL: System.Management.Automation.ParseException: 所在位置 C:\Users\admin\Desktop\驱动检测安装\lib\DriverTrust.ps1:31 字符: 53
++         elseif ($vendor -and $whql -and $signed) { 'official' }
++                                                     ~~~~~~~~~~~
+表达式或语句中包含意外的标记“official' }
+        elseif ($vendor) { 'vendor' }
+        elseif ($raw.url -match 'github\.com') { 'community' }
+        else { 'unknown' }
+
+    $verifiedOn = if ($raw.verifiedOn) { [string]$raw.verifiedOn } else { '' }
+    $verifiedMachines = if ($raw.verifiedMachines) { [int]$raw.verifiedMachines } else { 0 }
+    $successRate = if ($null -ne $raw.installSuccessRate) { [double]$raw.installSuccessRate } else { $null }
+
+    if (-not $successRate -and $Package -and $Package.Id) {
+        $hint = Get-PackageSuccessRateHint -PackageId $Package.Id
+        if ($null -ne $hint) { $successRate = $hint }
+    }
+
+    $badgeParts = New-Object System.Collections.ArrayList
+    switch ($trustLevel) {
+        'official'   { [void]$badgeParts.Add('瀹樻柟椹卞姩') }
+        'vendor'     { [void]$badgeParts.Add('鍘傚晢椹卞姩') }
+        'community'  { [void]$badgeParts.Add('绀惧尯鍖?”。
+
+所在位置 C:\Users\admin\Desktop\驱动检测安装\lib\DriverTrust.ps1:31 字符: 53
++         elseif ($vendor -and $whql -and $signed) { 'official' }
++                                                     ~
+哈希文本不完整。
+
+所在位置 C:\Users\admin\Desktop\驱动检测安装\lib\DriverTrust.ps1:10 字符: 20
++     if (-not $raw) {
++                    ~
+语句块或类型定义中缺少右“}”。
+
+所在位置 C:\Users\admin\Desktop\驱动检测安装\lib\DriverTrust.ps1:3 字符: 31
++ function Get-PackageTrustMeta {
++                               ~
+语句块或类型定义中缺少右“}”。
+
+所在位置 C:\Users\admin\Desktop\驱动检测安装\lib\DriverTrust.ps1:49 字符: 52
++         'community'  { [void]$badgeParts.Add('绀惧尯鍖?) }
++                                                    ~
+表达式或语句中包含意外的标记“)”。
+
+所在位置 C:\Users\admin\Desktop\驱动检测安装\lib\DriverTrust.ps1:49 字符: 54
++         'community'  { [void]$badgeParts.Add('绀惧尯鍖?) }
++                                                      ~
+表达式或语句中包含意外的标记“}”。
+
+所在位置 C:\Users\admin\Desktop\驱动检测安装\lib\DriverTrust.ps1:52 字符: 41
++     if ($whql) { [void]$badgeParts.Add('WHQL') }
++                                         ~
+方法调用中缺少“)”。
+
+所在位置 C:\Users\admin\Desktop\驱动检测安装\lib\DriverTrust.ps1:52 字符: 41
++     if ($whql) { [void]$badgeParts.Add('WHQL') }
++                                         ~~~~~~~~
+表达式或语句中包含意外的标记“WHQL') }
+    if ($verifiedMachines -gt 0) { [void]$badgeParts.Add("宸查獙璇伱?verifiedMachines") }
+    elseif ($successRate -and $successRate -ge 0.9) { [void]$badgeParts.Add('楂樻垚鍔熺巼') }
+
+    return [PSCustomObject]@{
+        TrustLevel         = $trustLevel
+        SourceVendor       = $vendor
+        Whql               = $whql
+        VerifiedOn         = $verifiedOn
+        VerifiedMachines   = $verifiedMachines
+        InstallSuccessRate = $successRate
+        TrustBadge         = ($badgeParts -join '”。
+
+所在位置 C:\Users\admin\Desktop\驱动检测安装\lib\DriverTrust.ps1:50 字符: 22
++         default      { [void]$badgeParts.Add('寰呴獙璇?) }
++                      ~
+语句块或类型定义中缺少右“}”。
+
+所在位置 C:\Users\admin\Desktop\驱动检测安装\lib\DriverTrust.ps1:76 字符: 37
++         [void]$reasons.Add('鏉ユ簮鏈獙璇?)
++                                     ~
+表达式或语句中包含意外的标记“)”。
+
+并未报告所有分析错误。请更正报告的错误并重试。
+[14:55:23.695] 在 <ScriptBlock>、C:\Users\admin\Desktop\驱动检测安装\engine\Initialize-Engine.ps1 中: 第 21 行
+在 <ScriptBlock>、C:\Users\admin\Desktop\驱动检测安装\engine\DriverEngine.ps1 中: 第 7 行
+在 <ScriptBlock>、C:\Users\admin\Desktop\驱动检测安装\scripts\test-gui-startup.ps1 中: 第 17 行
+[14:55:49.720] Load engine
+[14:55:49.882] FAIL: System.Management.Automation.ParseException: 所在位置 C:\Users\admin\Desktop\驱动检测安装\lib\OfflineWorkflow.ps1:77 字符: 73
++ ... CIODIYOperationResult -Success $true -Code 'OK' -Message '绂荤嚎鍖呭鍏ュ畬鎴?
++                                                              ~~~~~~~~~~~~
+字符串缺少终止符: '。
+
+所在位置 C:\Users\admin\Desktop\驱动检测安装\lib\OfflineWorkflow.ps1:53 字符: 35
++ function Import-OfflineDriverPack {
++                                   ~
+语句块或类型定义中缺少右“}”。
+[14:55:49.882] 在 <ScriptBlock>、C:\Users\admin\Desktop\驱动检测安装\engine\Initialize-Engine.ps1 中: 第 26 行
+在 <ScriptBlock>、C:\Users\admin\Desktop\驱动检测安装\engine\DriverEngine.ps1 中: 第 7 行
+在 <ScriptBlock>、C:\Users\admin\Desktop\驱动检测安装\scripts\test-gui-startup.ps1 中: 第 17 行
+[14:55:51.660] Load engine
+[14:55:51.810] FAIL: System.Management.Automation.ParseException: 所在位置 C:\Users\admin\Desktop\驱动检测安装\lib\OfflineWorkflow.ps1:77 字符: 73
++ ... CIODIYOperationResult -Success $true -Code 'OK' -Message '绂荤嚎鍖呭鍏ュ畬鎴?
++                                                              ~~~~~~~~~~~~
+字符串缺少终止符: '。
+
+所在位置 C:\Users\admin\Desktop\驱动检测安装\lib\OfflineWorkflow.ps1:53 字符: 35
++ function Import-OfflineDriverPack {
++                                   ~
+语句块或类型定义中缺少右“}”。
+[14:55:51.827] 在 <ScriptBlock>、C:\Users\admin\Desktop\驱动检测安装\engine\Initialize-Engine.ps1 中: 第 26 行
+在 <ScriptBlock>、C:\Users\admin\Desktop\驱动检测安装\engine\DriverEngine.ps1 中: 第 7 行
+在 <ScriptBlock>、C:\Users\admin\Desktop\驱动检测安装\scripts\test-gui-startup.ps1 中: 第 17 行
+[14:58:01.932] Load engine
+[14:58:02.313] Engine OK
+[14:58:02.313] Load WPF
+[14:58:02.338] Load XAML
+[14:58:02.450] FAIL: System.Management.Automation.MethodInvocationException: 使用“1”个参数调用“Load”时发生异常:“在“System.Windows.StaticResourceExtension”上提供值时引发了异常。”
+[14:58:02.453] 在 <ScriptBlock>、C:\Users\admin\Desktop\驱动检测安装\scripts\test-gui-startup.ps1 中: 第 29 行
+[14:58:04.699] Load engine
+[14:58:05.065] Engine OK
+[14:58:05.065] Load WPF
+[14:58:05.080] Load XAML
+[14:58:05.166] FAIL: System.Management.Automation.MethodInvocationException: 使用“1”个参数调用“Load”时发生异常:“在“System.Windows.StaticResourceExtension”上提供值时引发了异常。”
+[14:58:05.166] 在 <ScriptBlock>、C:\Users\admin\Desktop\驱动检测安装\scripts\test-gui-startup.ps1 中: 第 29 行
+[14:58:25.185] Load engine
+[14:58:25.567] Engine OK
+[14:58:25.567] Load WPF
+[14:58:25.583] Load XAML
+[14:58:25.668] XAML OK
+[14:58:25.682] FindName done
+[14:58:25.682] Load GuiDriverRow
+[14:58:25.864] GuiDriverRow OK
+[14:58:25.864] Test DriverGridRow
+[14:58:25.864] DriverGridRow type OK
+[14:58:25.864] ALL OK
+[14:58:27.367] Load engine
+[14:58:27.732] Engine OK
+[14:58:27.732] Load WPF
+[14:58:27.750] Load XAML
+[14:58:27.831] XAML OK
+[14:58:27.850] FindName done
+[14:58:27.862] Load GuiDriverRow
+[14:58:28.033] GuiDriverRow OK
+[14:58:28.033] Test DriverGridRow
+[14:58:28.033] DriverGridRow type OK
+[14:58:28.033] ALL OK
+[15:04:47.872] Load engine
+[15:04:48.326] Engine OK
+[15:04:48.326] Load WPF
+[15:04:48.342] Load XAML
+[15:04:48.454] XAML OK
+[15:04:48.546] FindName done
+[15:04:48.548] Load GuiDriverRow
+[15:04:48.767] GuiDriverRow OK
+[15:04:48.768] Test DriverGridRow
+[15:04:48.776] DriverGridRow type OK
+[15:04:48.779] ALL OK
+[15:04:51.820] Load engine
+[15:04:52.298] Engine OK
+[15:04:52.298] Load WPF
+[15:04:52.323] Load XAML
+[15:04:52.438] XAML OK
+[15:04:52.479] FindName done
+[15:04:52.482] Load GuiDriverRow
+[15:04:52.688] GuiDriverRow OK
+[15:04:52.688] Test DriverGridRow
+[15:04:52.688] DriverGridRow type OK
+[15:04:52.705] ALL OK
+[15:05:22.053] Load engine
+[15:05:22.444] Engine OK
+[15:05:22.459] Load WPF
+[15:05:22.462] Load XAML
+[15:05:22.554] XAML OK
+[15:05:22.588] FindName done
+[15:05:22.588] Load GuiDriverRow
+[15:05:22.779] GuiDriverRow OK
+[15:05:22.781] Test DriverGridRow
+[15:05:22.789] DriverGridRow type OK
+[15:05:22.792] ALL OK
+[14:01:19.516] Load engine
+[14:01:21.384] Engine OK
+[14:01:21.386] Load WPF
+[14:01:21.402] Load XAML
+[14:01:21.498] XAML OK
+[14:01:21.567] FindName done
+[14:01:21.569] Load GuiDriverRow
+[14:01:21.756] GuiDriverRow OK
+[14:01:21.759] Test DriverGridRow
+[14:01:21.766] DriverGridRow type OK
+[14:01:21.768] ALL OK
+[14:17:28.128] Load engine
+[14:17:28.566] Engine OK
+[14:17:28.569] Load WPF
+[14:17:28.584] Load XAML
+[14:17:28.690] XAML OK
+[14:17:28.730] FindName done
+[14:17:28.732] Load GuiDriverRow
+[14:17:28.922] GuiDriverRow OK
+[14:17:28.925] Test DriverGridRow
+[14:17:28.931] DriverGridRow type OK
+[14:17:28.933] ALL OK
+[14:17:15.280] Load engine
+[14:17:15.700] Engine OK
+[14:17:15.702] Load WPF
+[14:17:15.715] Load XAML
+[14:17:15.809] XAML OK
+[14:17:15.854] FindName done
+[14:17:15.856] Load GuiDriverRow
+[14:17:16.085] GuiDriverRow OK
+[14:17:16.087] Test DriverGridRow
+[14:17:16.093] DriverGridRow type OK
+[14:17:16.095] ALL OK
+[14:18:30.214] Load engine
+[14:18:30.647] Engine OK
+[14:18:30.649] Load WPF
+[14:18:30.662] Load XAML
+[14:18:30.756] XAML OK
+[14:18:30.796] FindName done
+[14:18:30.800] Load GuiDriverRow
+[14:18:30.985] GuiDriverRow OK
+[14:18:30.988] Test DriverGridRow
+[14:18:30.994] DriverGridRow type OK
+[14:18:30.995] ALL OK
+[14:22:56.966] Load engine
+[14:22:57.522] Engine OK
+[14:22:57.526] Load WPF
+[14:22:57.538] Load XAML
+[14:22:57.631] XAML OK
+[14:22:57.673] FindName done
+[14:22:57.676] Load GuiDriverRow
+[14:22:57.861] GuiDriverRow OK
+[14:22:57.863] Test DriverGridRow
+[14:22:57.868] DriverGridRow type OK
+[14:22:57.871] ALL OK
+[14:23:50.830] Load engine
+[14:23:51.412] Engine OK
+[14:23:51.415] Load WPF
+[14:23:51.438] Load XAML
+[14:23:51.554] XAML OK
+[14:23:51.598] FindName done
+[14:23:51.601] Load GuiDriverRow
+[14:23:52.145] GuiDriverRow OK
+[14:23:52.148] Test DriverGridRow
+[14:23:52.156] DriverGridRow type OK
+[14:23:52.159] ALL OK
+[10:07:56.321] Load engine
+[10:07:56.729] FAIL: System.Management.Automation.ParseException: At C:\Users\admin\Desktop\驱动检测安装\lib\CatalogDownloader.ps1:199 char:38
++             "UpdateId: $($found.Guid ?? $found.UpdateId ?? '')",
++                                      ~~
+Unexpected token '??' in expression or statement.
+[10:07:56.733] at <ScriptBlock>, C:\Users\admin\Desktop\驱动检测安装\engine\Initialize-Engine.ps1: line 45
+at <ScriptBlock>, C:\Users\admin\Desktop\驱动检测安装\engine\DriverEngine.ps1: line 7
+at <ScriptBlock>, C:\Users\admin\Desktop\驱动检测安装\scripts\test-gui-startup.ps1: line 33
+[10:15:14.656] Load engine
+[10:15:15.224] FAIL: System.Management.Automation.ParseException: At C:\Users\admin\Desktop\驱动检测安装\lib\CatalogDownloader.ps1:199 char:38
++             "UpdateId: $($found.Guid ?? $found.UpdateId ?? '')",
++                                      ~~
+Unexpected token '??' in expression or statement.
+[10:15:15.227] at <ScriptBlock>, C:\Users\admin\Desktop\驱动检测安装\engine\Initialize-Engine.ps1: line 45
+at <ScriptBlock>, C:\Users\admin\Desktop\驱动检测安装\engine\DriverEngine.ps1: line 7
+at <ScriptBlock>, C:\Users\admin\Desktop\驱动检测安装\scripts\test-gui-startup.ps1: line 33
+[11:15:57.430] Load engine
+[11:15:58.031] Engine OK
+[11:15:58.034] Load WPF
+[11:15:58.054] Load XAML
+[11:15:58.173] XAML OK
+[11:15:58.216] FindName done
+[11:15:58.219] Load GuiDriverRow
+[11:15:58.445] GuiDriverRow OK
+[11:15:58.449] Test DriverGridRow
+[11:15:58.456] DriverGridRow type OK
+[11:15:58.459] ALL OK
+[11:22:32.899] Load engine
+[11:22:34.430] Engine OK
+[11:22:34.432] Load WPF
+[11:22:34.451] Load XAML
+[11:22:34.551] XAML OK
+[11:22:34.595] FindName done
+[11:22:34.598] Load GuiDriverRow
+[11:22:34.839] GuiDriverRow OK
+[11:22:34.840] Test DriverGridRow
+[11:22:34.848] DriverGridRow type OK
+[11:22:34.852] ALL OK

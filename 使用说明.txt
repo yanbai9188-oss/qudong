@@ -1,0 +1,227 @@
+驱动检测安装 — CIODIY Driver Center v1.8.0 使用说明
+==========================================
+
+v1.8.0 导航壳层版（结构定死，后续只填能力）：
+  ✓ 8 页导航：首页 / 驱动中心 / 快速修复 / 装机 / 仓库 / 回滚 / 日志 / 设置
+  ✓ docs/ARCHITECTURE.md — 架构与评分算法冻结
+  ✓ lib/DriverScorer.ps1 — HWID50+类别20+OS10+WHQL5+机器10+安装5
+
+v1.7.0 工程化重构版：
+  ✓ DriverBooster.ps1 瘦身 — 仅入口 + CLI，GUI 拆至 lib/Gui*.ps1
+  ✓ lib/Types.ps1 — FixPlan / OperationResult 标准对象
+  ✓ DriverEngine.ps1 冻结 facade — GUI 只调 Engine API
+  ✓ tests/run_all.ps1 — 发布前一条命令跑全套测试
+
+v1.6.10 安装权限修复版：
+  ✓ 日志/缓存/锁文件写入 %LOCALAPPDATA%\CIODIY_DriverBooster（Program Files 下普通用户可启动）
+  ✓ Get-AppDataRoot 自动检测安装目录是否可写，不可写则重定向到用户目录
+  ✓ 启动器不再使用隐藏 PowerShell，避免残留进程占锁
+  ✓ 修复打不开.bat 同时清理用户目录与安装目录的 app.lock
+
+v1.6.9 启动可靠性：
+  ✓ lib/AppStartup.ps1 — 清理死锁 / 激活已有窗口 / 孤儿进程回收
+  ✓ 单实例锁 finally 释放
+
+v1.6.7 稳定性重构版：
+  ✓ lib/AppStartup.ps1 — 引擎加载/单实例锁/STA 校验/启动日志
+  ✓ 后台任务全面 try/catch，异常不再卡死界面
+  ✓ PID 文件锁替代 Mutex，避免误杀/双开
+  ✓ 所有启动入口强制 -Sta（Launch.vbs / Launch.bat）
+  ✓ manifest 加载失败降级，不阻断启动
+  ✓ 健康缓存 JSON 单元素数组解包修复
+
+v1.6.6 最后信任补完版：
+  ✓ MEI 依赖进入修复计划并在 WiFi 行下显示「附加组件：└ Intel MEI」
+  ✓ lib/ScenarioFilter.ps1 — 场景筛选改为 DeviceClass（USB 场景不再误伤蓝牙）
+  ✓ lib/PackageDeduplicator.ps1 — 同包 Chipset 合并为「Intel 芯片组设备 ×2」
+  ✓ lib/DeviceDisplayFormatter.ps1 — WiFi/蓝牙等设备名称统一中文
+  ✓ 健康区拆分：发现问题 / 推荐修复 / 可选 / 不建议（6=5+0+1）
+  ✓ 驱动库健康旁「修复」按钮 — 自动 SHA 校验 + 补下载缺失包
+
+v1.6.5 产品完善版：
+  ✓ lib/DeviceNameResolver.ps1 — 智能设备名称（未知设备（蓝牙）等）
+  ✓ lib/RepairSummary.ps1 — 发现项/推荐修复/可选/不建议 统一计数
+  ✓ USB 存储二次合并（USB 存储设备 ×2）
+  ✓ 依赖组件折叠（WiFi 下显示 └ 附加：Intel MEI）
+  ✓ lib/DriverRepoHealth.ps1 + scripts/Repair-DriverRepository.ps1
+  ✓ 概览区显示「驱动库健康 XX%」
+
+v1.6.4 信任修复版：
+  ✓ lib/DeviceClassGuard.ps1 — 设备类别硬门槛 + 错配黑名单（WiFi 不能推 MEI 等）
+  ✓ lib/DeviceDeduplicator.ps1 — 同一物理设备合并为一行
+  ✓ lib/UserFriendlyText.ps1 — 未知设备 / CatalogSearch 等人话文案
+  ✓ lib/RecommendTier.ps1 — 强烈推荐 / 推荐 / 可选 / 不建议自动安装
+  ✓ manifest 包级 deviceClass 字段
+  ✓ 左侧「快速开始」+ 高级功能折叠 + 首次 3 步引导
+  ✓ 开发版启动改为 Launch.vbs 无黑窗
+
+v1.6.3 UI 布局修复：
+  ✓ 顶部/侧边栏/底部自适应高度，文字换行与滚动
+
+v1.6.0 驱动仓库自动化：
+  ✓ lib/DriverRepoBuilder.ps1 — 扫描 Drivers、校验 INF、提取 HWID
+  ✓ scripts/Publish-DriverRepo.ps1 — 打 ZIP、更新 manifest SHA256、可选上传 Release
+  ✓ 发布驱动仓库.bat — 一键预览 / 构建 / 上传
+  ✓ qudong-repo/Publish-Release.ps1 支持 -SkipBuild
+
+v1.5.0 驱动健康度：
+  ✓ lib/DriverHealth.ps1 — 本地健康评分（完整率/缺失/过时/失败历史/签名/库缺口）
+  ✓ 概览区显示「驱动健康度 92%」+ 建议摘要
+  ✓ 启动后台自动分析（先快速估计 → 再完整扫描）
+  ✓ 缓存 Cache\health.json
+  ✓ CLI: DriverBooster.ps1 -HealthOnly -NoGui
+
+v1.4.0 装机模式：
+  ✓ 一键流程：扫描 → 自动选推荐驱动 → 安装 → 验证 → HTML 报告
+  ✓ GUI 左侧「装机模式」+ 开始装机
+  ✓ CLI: DriverBooster.ps1 -DeployMode -AutoFix -RebootIfNeeded -NoGui
+  ✓ 报告: Logs\Deploy_yyyyMMdd_HHmmss.html
+
+v1.3.2 硬件识别层：
+  ✓ lib/HardwareProfile.ps1 — 机器画像（品牌/CPU/GPU/网卡/音频/BIOS）
+  ✓ 顶部硬件信息卡（替代单行系统信息）
+  ✓ 评分升级：HWID(50) + 品牌机型(20) + Win10偏好(15) + 成功率(10) + WHQL(5)
+  ✓ manifest 可选 oem_brands 字段优先 OEM 驱动
+
+v1.3.1 扫描加速：
+  ✓ 驱动列表复选框，默认勾选「推荐」项
+  ✓ 全选 / 取消全选 / 仅选推荐
+  ✓ 「修复已选 N 项」替代一键全修
+  ✓ GUI「回滚上次修复」+ 事务摘要
+  ✓ tools\Test-ReleaseHealth.ps1 发布体检
+  ✓ 在线版 + 离线版双 Setup 包
+
+v1.2.5 启动优化：
+  ✓ Driver Booster 深色主题界面（全中文）
+  ✓ 场景栏新增「全部设备」；修复按钮显示待修复数量
+  ✓ 驱动列表状态行着色（错误/过时/正常）
+  ✓ 修复时显示下载进度（MB/百分比）
+  ✓ 修复完成后重启提示对话框
+  ✓ 引擎日志与设备类别全面中文化
+
+v1.2.3 装完即用：
+  ✓ 首次启动自动同步驱动清单（Bootstrap）
+  ✓ Setup.exe 安装包 + 桌面快捷方式（无黑窗）
+  ✓ 在线自动下载驱动包，无需手动复制 Drivers 文件夹
+
+v1.2.2 场景快捷修复：
+  ✓ 无声音 / 音频 — 筛选 MEDIA、HDAUDIO、音频驱动包
+  ✓ 无网络 / Wi-Fi — 筛选网卡、无线、蓝牙网络相关
+  ✓ USB 无法识别 — 筛选 USB 控制器、芯片组 USB 包
+  ✓ 场景扫描后可选「立即修复」；「一键修复全部」按当前场景范围执行
+
+v1.2.1 性能与统计：
+  ✓ INF 索引缓存 Cache\inf_index.json（加速本地驱动匹配）
+  ✓ 下载进度显示（MB / 百分比）
+  ✓ 安装统计 Cache\install_stats.jsonl（本地成功率反馈打分）
+
+v1.2 Win10 优先升级：
+  ✓ OS 识别（Win10 / Win11 / Build 号）
+  ✓ manifest 包级 os 匹配（win10 / win11）
+  ✓ Win10 常用核显 HWID 扩展（6~11 代）
+  ✓ 7260 WiFi/蓝牙 win10_preferred 加分
+
+v1.1 可靠性阶段：
+  ✓ 安装事务 + 评分 + 验证 + 回滚
+  ✓ Engine 分层 + Manifest v3
+  ✓ 测试 + CI + Release 打包
+
+驱动库与镜像
+------------
+  仓库: https://github.com/yanbai9188-oss/qudong
+  manifest: v1.3.0（release: v1.1.0 统一 URL）
+  Release: v1.1.0（26 个驱动 ZIP，含扩展包）
+
+  填充本地库: 填充驱动库.bat
+  Win10 常见包: 填充Win10驱动.bat
+  扩展包(NVIDIA/触摸板/打印机): 填充扩展驱动.bat
+  发布驱动仓库: 发布驱动仓库.bat
+  或: scripts\Publish-DriverRepo.ps1 -DryRun
+  或: scripts\Publish-DriverRepo.ps1 -AddNewPackages -ManifestVersion 1.4.0 -ReleaseTag v1.2.0
+  或: scripts\Publish-DriverRepo.ps1 -UploadRelease -PushManifest -ReleaseTag v1.1.0
+  发布 Release v1.1.0: 发布Release_v1.1.0.bat
+  或: qudong-repo\Publish-Release.ps1 -Tag v1.1.0
+
+内网无人值守
+------------
+  内网无人值守.bat
+  或: deploy\Invoke-UnattendedDriverFix.ps1 -Scenario network -LocalOnly
+  参数: -LocalOnly（仅本地 Drivers\） -SkipRestore -NoRollback -LogDir
+
+可选 EXE
+--------
+  release\build_exe.ps1   （需 Install-Module ps2exe）
+
+新增驱动包 (v1.3.0)
+-------------------
+  nvidia_dch_gpu        — NVIDIA GeForce DCH
+  synaptics_touchpad    — Synaptics 触摸板
+  elan_touchpad         — ELAN 精密触摸板
+  hp_printer_pcl        — HP PCL 通用打印
+  canon_printer_ufrii   — Canon UFRII 打印
+
+支持系统
+--------
+  主要: Windows 10 x64（Build 10240+）
+  兼容: Windows 11 x64
+  需要: PowerShell 5.1+、管理员权限（安装时）
+
+启动
+----
+  推荐: 安装 release\CIODIY_DriverBooster_Setup_1.2.3.exe（双击安装，桌面快捷方式启动）
+  开发: 双击「启动驱动检测安装.bat」
+  打包: 双击「打包安装程序.bat」
+
+  装完即用（类似 Driver Booster）:
+    - 首次启动自动同步驱动索引（需联网）
+    - 扫描 → 一键修复，驱动 ZIP 自动从 GitHub 下载，无需手动拷 Drivers\
+
+界面
+----
+  场景快捷修复：无声音 / 无网络 / USB（扫描 + 可选立即修复）
+  立即扫描 / 一键修复 / 同步镜像 / 安装本地库
+  系统栏显示：机型 | Windows 版本 Build | 架构
+
+命令行
+------
+  .\DriverBooster.ps1 -ScanOnly -NoGui
+  .\DriverBooster.ps1 -ScanOnly -NoGui -Scenario audio
+  .\DriverBooster.ps1 -FixAll -NoGui -Scenario network -RollbackOnError
+  .\DriverBooster.ps1 -HealthOnly -NoGui
+  .\DriverBooster.ps1 -DeployMode -NoGui -AutoFix -RebootIfNeeded
+  .\DriverBooster.ps1 -DeployMode -NoGui -DeploySilent
+  .\DriverBooster.ps1 -RollbackLast
+
+  退出码（-FixAll -NoGui）: 0=成功  1=失败/回滚  2=成功但建议重启
+
+发布包
+------
+  release\CIODIY_DriverBooster_1.2.2.zip
+  内含 Win10_Checklist.txt（批量重装检查清单）
+
+测试
+----
+  tests\test_scan.ps1
+  tests\test_match.ps1
+  tests\test_os.ps1
+  tests\test_install.ps1
+
+Win10 批量重装建议流程
+----------------------
+  1. 同步驱动镜像（拉 manifest v1.1.0）
+  2. 扫描缺失驱动
+  3. 优先在线下载（GitHub Release）或预置 Drivers\ 离线库
+  4. 一键修复（事务 + 验证 + 可回滚）
+  5. 重启后再扫描确认
+
+常见 Win10 驱动包
+-----------------
+  intel_usb3            — USB 3.0 xHCI / 芯片组 USB
+  intel_lan_i219        — Intel I219 板载千兆网卡
+  intel_wifi_7260       — 7260 无线
+  intel_wifi_8260       — 8260/8265 无线
+  intel_bluetooth_7260  — 7260 蓝牙
+  realtek_cardreader    — Realtek RTS52xx 读卡器
+  intel_chipset / intel_mei / realtek_lan — 基础平台
+  intel_graphics        — 核显（Win10/11 DCH）
+  realtek_audio / intel_sst — 音频

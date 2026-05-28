@@ -1,0 +1,221 @@
+﻿{
+    "HealthPercent":  85,
+    "TotalPackages":  26,
+    "Valid":  22,
+    "Warning":  0,
+    "Failed":  4,
+    "SummaryLine":  "驱动库健康：85%（有效 22 / 警告 0 / 失败 4）",
+    "ShortLine":  "驱动库健康 85%",
+    "Details":  [
+                    {
+                        "Id":  "Intel_Chipset_INF",
+                        "Level":  "fail",
+                        "Issues":  [
+                                       "missing"
+                                   ],
+                        "HasInf":  false
+                    },
+                    {
+                        "Id":  "Intel_SerialIO",
+                        "Level":  "pass",
+                        "Issues":  [
+                                       "no_zip"
+                                   ],
+                        "HasInf":  true
+                    },
+                    {
+                        "Id":  "Intel_Bluetooth",
+                        "Level":  "pass",
+                        "Issues":  [
+                                       "no_zip"
+                                   ],
+                        "HasInf":  true
+                    },
+                    {
+                        "Id":  "intel_wifi",
+                        "Level":  "pass",
+                        "Issues":  [
+                                       "no_zip"
+                                   ],
+                        "HasInf":  true
+                    },
+                    {
+                        "Id":  "intel_wifi_7260",
+                        "Level":  "fail",
+                        "Issues":  [
+                                       "missing"
+                                   ],
+                        "HasInf":  false
+                    },
+                    {
+                        "Id":  "intel_bluetooth_7260",
+                        "Level":  "fail",
+                        "Issues":  [
+                                       "missing"
+                                   ],
+                        "HasInf":  false
+                    },
+                    {
+                        "Id":  "realtek_lan_8168",
+                        "Level":  "pass",
+                        "Issues":  [
+                                       "no_zip"
+                                   ],
+                        "HasInf":  true
+                    },
+                    {
+                        "Id":  "intel_mei",
+                        "Level":  "pass",
+                        "Issues":  [
+                                       "no_zip"
+                                   ],
+                        "HasInf":  true
+                    },
+                    {
+                        "Id":  "Intel_RST",
+                        "Level":  "pass",
+                        "Issues":  [
+                                       "no_zip"
+                                   ],
+                        "HasInf":  true
+                    },
+                    {
+                        "Id":  "Intel_DTT",
+                        "Level":  "pass",
+                        "Issues":  [
+                                       "no_zip"
+                                   ],
+                        "HasInf":  true
+                    },
+                    {
+                        "Id":  "Realtek_LAN",
+                        "Level":  "pass",
+                        "Issues":  [
+                                       "no_zip"
+                                   ],
+                        "HasInf":  true
+                    },
+                    {
+                        "Id":  "realtek_audio",
+                        "Level":  "pass",
+                        "Issues":  [
+                                       "no_zip"
+                                   ],
+                        "HasInf":  true
+                    },
+                    {
+                        "Id":  "AMD_Chipset",
+                        "Level":  "fail",
+                        "Issues":  [
+                                       "no_inf",
+                                       "no_zip"
+                                   ],
+                        "HasInf":  false
+                    },
+                    {
+                        "Id":  "intel_sst",
+                        "Level":  "pass",
+                        "Issues":  [
+                                       "no_zip"
+                                   ],
+                        "HasInf":  true
+                    },
+                    {
+                        "Id":  "Intel_Platform",
+                        "Level":  "pass",
+                        "Issues":  [
+                                       "no_zip"
+                                   ],
+                        "HasInf":  true
+                    },
+                    {
+                        "Id":  "intel_display_audio",
+                        "Level":  "pass",
+                        "Issues":  [
+                                       "no_zip"
+                                   ],
+                        "HasInf":  true
+                    },
+                    {
+                        "Id":  "intel_graphics",
+                        "Level":  "pass",
+                        "Issues":  [
+                                       "no_zip"
+                                   ],
+                        "HasInf":  true
+                    },
+                    {
+                        "Id":  "intel_usb3",
+                        "Level":  "pass",
+                        "Issues":  [
+                                       "no_zip"
+                                   ],
+                        "HasInf":  true
+                    },
+                    {
+                        "Id":  "intel_lan_i219",
+                        "Level":  "pass",
+                        "Issues":  [
+                                       "no_zip"
+                                   ],
+                        "HasInf":  true
+                    },
+                    {
+                        "Id":  "intel_wifi_8260",
+                        "Level":  "pass",
+                        "Issues":  [
+                                       "no_zip"
+                                   ],
+                        "HasInf":  true
+                    },
+                    {
+                        "Id":  "realtek_cardreader",
+                        "Level":  "pass",
+                        "Issues":  [
+                                       "no_zip"
+                                   ],
+                        "HasInf":  true
+                    },
+                    {
+                        "Id":  "hp_printer_pcl",
+                        "Level":  "pass",
+                        "Issues":  [
+
+                                   ],
+                        "HasInf":  true
+                    },
+                    {
+                        "Id":  "synaptics_touchpad",
+                        "Level":  "pass",
+                        "Issues":  [
+
+                                   ],
+                        "HasInf":  true
+                    },
+                    {
+                        "Id":  "nvidia_dch_gpu",
+                        "Level":  "pass",
+                        "Issues":  [
+
+                                   ],
+                        "HasInf":  true
+                    },
+                    {
+                        "Id":  "elan_touchpad",
+                        "Level":  "pass",
+                        "Issues":  [
+
+                                   ],
+                        "HasInf":  true
+                    },
+                    {
+                        "Id":  "canon_printer_ufrii",
+                        "Level":  "pass",
+                        "Issues":  [
+
+                                   ],
+                        "HasInf":  true
+                    }
+                ],
+    "ManifestUpdated":  false
+}
