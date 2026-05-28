@@ -1,8 +1,8 @@
-﻿{
+{
     "schema_version":  3,
-    "version":  "1.5.0",
-    "updated":  "2026-05-26",
-    "description":  "Yanbai Driver manifest - 声卡/网卡/WiFi/显卡 全型号覆盖版",
+    "version":  "1.6.0",
+    "updated":  "2026-05-28",
+    "description":  "Yanbai Driver manifest v1.6 - 多源下载支持 (GitHub/直链/Windows Update Catalog)",
     "repository":  "https://github.com/yanbai9188-oss/qudong",
     "release":  "v1.1.0",
     "mirrors":  [
@@ -259,7 +259,7 @@
                                                   "version":  "22.40.0.7",
                                                   "signed":  true,
                                                   "win10_preferred":  true,
-                                                  "title":  "Intel WiFi AC 8260/8265 (Win10 甯歌)",
+                                                  "title":  "Intel WiFi AC 8260/8265 (Win10 常见)",
                                                   "success_rate":  0.96,
                                                   "reboot_required":  false,
                                                   "vendor":  "Intel",
@@ -589,7 +589,24 @@
                                                                "PCI\\VEN_8086\u0026DEV_125B",
                                                                "PCI\\VEN_8086\u0026DEV_125C",
                                                                "PCI\\VEN_8086\u0026DEV_125D"
-                                                           ]
+                                                           ],
+                                                 "sources":  [
+                                                                 {
+                                                                     "type":  "catalog",
+                                                                     "hwids":  [
+                                                                                   "PCI\\VEN_8086\u0026DEV_15F3",
+                                                                                   "PCI\\VEN_8086\u0026DEV_15F2",
+                                                                                   "PCI\\VEN_8086\u0026DEV_125B",
+                                                                                   "PCI\\VEN_8086\u0026DEV_125C",
+                                                                                   "PCI\\VEN_8086\u0026DEV_125D"
+                                                                               ],
+                                                                     "keywords":  [
+                                                                                      "Intel I225-V Windows 10 64-bit",
+                                                                                      "Intel Ethernet Controller I225"
+                                                                                  ]
+                                                                 }
+                                                             ],
+                                                 "action":  "DownloadThenInstall"
                                              },
                      "Seed_AMD_Radeon_IGPU":  {
                                                   "id":  "amd_radeon_igpu",
@@ -623,8 +640,172 @@
                                                                 "PCI\\VEN_1002\u0026DEV_1681",
                                                                 "PCI\\VEN_1002\u0026DEV_15E7",
                                                                 "PCI\\VEN_1002\u0026DEV_687F"
-                                                            ]
-                                              }
+                                                            ],
+                                                  "sources":  [
+                                                                  {
+                                                                      "type":  "catalog",
+                                                                      "hwids":  [
+                                                                                    "PCI\\VEN_1002\u0026DEV_15D8",
+                                                                                    "PCI\\VEN_1002\u0026DEV_1636",
+                                                                                    "PCI\\VEN_1002\u0026DEV_1638",
+                                                                                    "PCI\\VEN_1002\u0026DEV_164C",
+                                                                                    "PCI\\VEN_1002\u0026DEV_164E"
+                                                                                ],
+                                                                      "keywords":  [
+                                                                                       "AMD Radeon Graphics Windows 10 64-bit",
+                                                                                       "AMD Radeon Vega"
+                                                                                   ]
+                                                                  }
+                                                              ],
+                                                  "action":  "DownloadThenInstall"
+                                              },
+                     "Seed_NVIDIA_DCH_GPU":  {
+                                                 "id":  "nvidia_dch_gpu",
+                                                 "category":  "gpu",
+                                                 "vendor":  "NVIDIA",
+                                                 "title":  "NVIDIA GeForce DCH 显卡驱动 (Win10/11 WHQL)",
+                                                 "priority":  80,
+                                                 "score":  88,
+                                                 "confidence":  "medium",
+                                                 "success_rate":  0.88,
+                                                 "risk":  "medium",
+                                                 "signed":  true,
+                                                 "whql":  true,
+                                                 "reboot_required":  true,
+                                                 "installOrder":  38,
+                                                 "verify":  "gpu",
+                                                 "rollback":  true,
+                                                 "os":  [
+                                                            "win10",
+                                                            "win11"
+                                                        ],
+                                                 "deviceClass":  "display",
+                                                 "sources":  [
+                                                                 {
+                                                                     "type":  "catalog",
+                                                                     "hwids":  [
+                                                                                   "PCI\\VEN_10DE\u0026DEV_2882",
+                                                                                   "PCI\\VEN_10DE\u0026DEV_2504",
+                                                                                   "PCI\\VEN_10DE\u0026DEV_2487",
+                                                                                   "PCI\\VEN_10DE\u0026DEV_2484",
+                                                                                   "PCI\\VEN_10DE\u0026DEV_2206",
+                                                                                   "PCI\\VEN_10DE\u0026DEV_2204",
+                                                                                   "PCI\\VEN_10DE\u0026DEV_1F99",
+                                                                                   "PCI\\VEN_10DE\u0026DEV_1F82",
+                                                                                   "PCI\\VEN_10DE\u0026DEV_1F02",
+                                                                                   "PCI\\VEN_10DE\u0026DEV_1B81",
+                                                                                   "PCI\\VEN_10DE\u0026DEV_1B84",
+                                                                                   "PCI\\VEN_10DE\u0026DEV_1C82",
+                                                                                   "PCI\\VEN_10DE\u0026DEV_1E04",
+                                                                                   "PCI\\VEN_10DE\u0026DEV_1E81",
+                                                                                   "PCI\\VEN_10DE\u0026DEV_2782",
+                                                                                   "PCI\\VEN_10DE\u0026DEV_2786",
+                                                                                   "PCI\\VEN_10DE\u0026DEV_2803",
+                                                                                   "PCI\\VEN_10DE\u0026DEV_2805"
+                                                                               ],
+                                                                     "keywords":  [
+                                                                                      "NVIDIA GeForce Windows 10 64-bit DCH",
+                                                                                      "NVIDIA Display Adapter Win10"
+                                                                                  ]
+                                                                 }
+                                                             ],
+                                                 "hwids":  [
+                                                               "PCI\\VEN_10DE\u0026DEV_2882",
+                                                               "PCI\\VEN_10DE\u0026DEV_2504",
+                                                               "PCI\\VEN_10DE\u0026DEV_2487",
+                                                               "PCI\\VEN_10DE\u0026DEV_2484",
+                                                               "PCI\\VEN_10DE\u0026DEV_2206",
+                                                               "PCI\\VEN_10DE\u0026DEV_2204",
+                                                               "PCI\\VEN_10DE\u0026DEV_1F99",
+                                                               "PCI\\VEN_10DE\u0026DEV_1F82",
+                                                               "PCI\\VEN_10DE\u0026DEV_1F02",
+                                                               "PCI\\VEN_10DE\u0026DEV_1B81",
+                                                               "PCI\\VEN_10DE\u0026DEV_1B84",
+                                                               "PCI\\VEN_10DE\u0026DEV_1C82",
+                                                               "PCI\\VEN_10DE\u0026DEV_1E04",
+                                                               "PCI\\VEN_10DE\u0026DEV_1E81",
+                                                               "PCI\\VEN_10DE\u0026DEV_2782",
+                                                               "PCI\\VEN_10DE\u0026DEV_2786",
+                                                               "PCI\\VEN_10DE\u0026DEV_2803",
+                                                               "PCI\\VEN_10DE\u0026DEV_2805"
+                                                           ],
+                                                 "advisory":  "全尺寸 NVIDIA 安装包超过 GitHub 限制，本驱动从 Windows Update 官方目录下载 WHQL 认证 INF 驱动"
+                                             },
+                     "Seed_Intel_Iris_Xe_Graphics":  {
+                                                         "id":  "intel_iris_xe_graphics",
+                                                         "category":  "gpu",
+                                                         "vendor":  "Intel",
+                                                         "title":  "Intel Iris Xe / UHD 集显驱动 (6th-14th Gen Win10/11)",
+                                                         "priority":  85,
+                                                         "score":  90,
+                                                         "confidence":  "high",
+                                                         "success_rate":  0.92,
+                                                         "risk":  "medium",
+                                                         "signed":  true,
+                                                         "whql":  true,
+                                                         "reboot_required":  true,
+                                                         "installOrder":  37,
+                                                         "verify":  "gpu",
+                                                         "rollback":  true,
+                                                         "os":  [
+                                                                    "win10",
+                                                                    "win11"
+                                                                ],
+                                                         "deviceClass":  "display",
+                                                         "sources":  [
+                                                                         {
+                                                                             "type":  "catalog",
+                                                                             "hwids":  [
+                                                                                           "PCI\\VEN_8086\u0026DEV_9A49",
+                                                                                           "PCI\\VEN_8086\u0026DEV_9A40",
+                                                                                           "PCI\\VEN_8086\u0026DEV_46A6",
+                                                                                           "PCI\\VEN_8086\u0026DEV_46A8",
+                                                                                           "PCI\\VEN_8086\u0026DEV_4626",
+                                                                                           "PCI\\VEN_8086\u0026DEV_4E71",
+                                                                                           "PCI\\VEN_8086\u0026DEV_5917",
+                                                                                           "PCI\\VEN_8086\u0026DEV_591B",
+                                                                                           "PCI\\VEN_8086\u0026DEV_3E9B",
+                                                                                           "PCI\\VEN_8086\u0026DEV_3EA0",
+                                                                                           "PCI\\VEN_8086\u0026DEV_8A56",
+                                                                                           "PCI\\VEN_8086\u0026DEV_8A5C",
+                                                                                           "PCI\\VEN_8086\u0026DEV_9BC8",
+                                                                                           "PCI\\VEN_8086\u0026DEV_9BCA",
+                                                                                           "PCI\\VEN_8086\u0026DEV_A788",
+                                                                                           "PCI\\VEN_8086\u0026DEV_7D55",
+                                                                                           "PCI\\VEN_8086\u0026DEV_7D45"
+                                                                                       ],
+                                                                             "keywords":  [
+                                                                                              "Intel(R) Iris Xe Graphics Windows 10 64-bit",
+                                                                                              "Intel UHD Graphics Windows 10 64-bit"
+                                                                                          ]
+                                                                         },
+                                                                         {
+                                                                             "type":  "direct",
+                                                                             "url":  "https://downloadmirror.intel.com/813078/igfx_win_101.6598.exe",
+                                                                             "extract":  "exe_extract",
+                                                                             "note":  "Intel DCH driver 31.0.101.6598 for 6th-14th Gen Win10/11 (fallback — verify URL is current)"
+                                                                         }
+                                                                     ],
+                                                         "hwids":  [
+                                                                       "PCI\\VEN_8086\u0026DEV_9A49",
+                                                                       "PCI\\VEN_8086\u0026DEV_9A40",
+                                                                       "PCI\\VEN_8086\u0026DEV_46A6",
+                                                                       "PCI\\VEN_8086\u0026DEV_46A8",
+                                                                       "PCI\\VEN_8086\u0026DEV_4626",
+                                                                       "PCI\\VEN_8086\u0026DEV_4E71",
+                                                                       "PCI\\VEN_8086\u0026DEV_5917",
+                                                                       "PCI\\VEN_8086\u0026DEV_591B",
+                                                                       "PCI\\VEN_8086\u0026DEV_3E9B",
+                                                                       "PCI\\VEN_8086\u0026DEV_3EA0",
+                                                                       "PCI\\VEN_8086\u0026DEV_8A56",
+                                                                       "PCI\\VEN_8086\u0026DEV_8A5C",
+                                                                       "PCI\\VEN_8086\u0026DEV_9BC8",
+                                                                       "PCI\\VEN_8086\u0026DEV_9BCA",
+                                                                       "PCI\\VEN_8086\u0026DEV_A788",
+                                                                       "PCI\\VEN_8086\u0026DEV_7D55",
+                                                                       "PCI\\VEN_8086\u0026DEV_7D45"
+                                                                   ]
+                                                     }
                  },
     "target_os":  [
                       "win10",
